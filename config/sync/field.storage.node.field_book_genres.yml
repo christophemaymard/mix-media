@@ -1,0 +1,20 @@
+uuid: f4acc655-d7f4-45ef-8eb9-a1f13b33c565
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_book_genres
+field_name: field_book_genres
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -85,3 +85,29 @@ Reference type
     Vocabulary: Genres
 
 
+
+-------------------------------------------------------------------------------
+-- Content Type: Book
+
+Label: Title
+Machine: field_book_title
+Type: Text (plain)
+Allowed number of values: 1
+Max length: 255
+Required: true
+
+Label: Synopsis
+Machine: field_book_synopsis
+Type: Text (formatted, long)
+Allowed number of values: 1
+Required: true
+
+Label: Genres
+Machine: field_book_genres
+Type: Reference - Taxonomy term
+Type of item to reference: Taxonomy term
+Allowed number of values: Unlimited
+Required: true
+Reference type
+    Reference method: Default
+    Vocabulary: Genres

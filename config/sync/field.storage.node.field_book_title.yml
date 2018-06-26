@@ -1,0 +1,21 @@
+uuid: b462f4ad-08bf-42e9-a4be-9baeae7515fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_book_title
+field_name: field_book_title
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
