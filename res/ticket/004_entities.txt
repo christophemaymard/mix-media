@@ -7,4 +7,5 @@ Les entités.
 -- Vocabulaire
 
 Genres
+Pays
 

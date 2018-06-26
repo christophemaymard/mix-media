@@ -1,0 +1,9 @@
+uuid: fd60a0ca-0254-43be-895b-53fce24b0cee
+langcode: en
+status: true
+dependencies: {  }
+name: Countries
+vid: countries
+description: Pays
+hierarchy: 0
+weight: 0
