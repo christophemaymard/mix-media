@@ -26,3 +26,57 @@ Type: Text (formatted, long)
 Allowed number of values: 1
 Required: true
 
+
+
+-------------------------------------------------------------------------------
+-- Content Type: Movie
+
+Label: Title
+Machine: field_movie_title
+Type: Text (plain)
+Allowed number of values: 1
+Max length: 255
+Required: true
+
+Label: Release Date
+Machine: field_movie_release_date
+Type: Date
+Date type: Date only
+Allowed number of values: 1
+Required: true
+
+Label: Runtime
+Machine: field_movie_runtime
+Type: Number (integer)
+Allowed number of values: 1
+Required: true
+Minimum: 60
+Suffix: second|seconds
+
+Label: Synopsis
+Machine: field_movie_synopsis
+Type: Text (formatted, long)
+Allowed number of values: 1
+Required: true
+
+Label: Genres
+Machine: field_movie_genres
+Type: Reference - Taxonomy term
+Type of item to reference: Taxonomy term
+Allowed number of values: Unlimited
+Required: true
+Reference type
+    Reference method: Default
+    Vocabulary: Genres
+
+Label: Countries
+Machine: field_movie_countries
+Type: Reference - Taxonomy term
+Type of item to reference: Taxonomy term
+Allowed number of values: Unlimited
+Required: true
+Reference type
+    Reference method: Default
+    Vocabulary: Genres
+
+

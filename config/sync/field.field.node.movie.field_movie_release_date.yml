@@ -1,0 +1,21 @@
+uuid: d0de7cec-979b-4c3e-8eb5-6a7e947debad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_movie_release_date
+    - node.type.movie
+  module:
+    - datetime
+id: node.movie.field_movie_release_date
+field_name: field_movie_release_date
+entity_type: node
+bundle: movie
+label: 'Release Date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

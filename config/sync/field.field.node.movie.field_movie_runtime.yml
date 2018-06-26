@@ -1,0 +1,23 @@
+uuid: 903a6fe0-efa2-4896-a7ba-549e9b8f316f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_movie_runtime
+    - node.type.movie
+id: node.movie.field_movie_runtime
+field_name: field_movie_runtime
+entity_type: node
+bundle: movie
+label: Runtime
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 60
+  max: null
+  prefix: ''
+  suffix: second|seconds
+field_type: integer
