@@ -9,3 +9,20 @@ Les entités.
 Genres
 Pays
 
+
+-------------------------------------------------------------------------------
+-- Content Type: Person
+
+Label: Name
+Machine: field_person_name
+Type: Text (plain)
+Allowed number of values: 1
+Max length: 255
+Required: true
+
+Label: Bio
+Machine: field_person_bio
+Type: Text (formatted, long)
+Allowed number of values: 1
+Required: true
+
