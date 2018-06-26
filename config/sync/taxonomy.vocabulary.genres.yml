@@ -1,0 +1,9 @@
+uuid: 0a7acdd4-a78c-4223-adb8-0a9c41c2f5ba
+langcode: en
+status: true
+dependencies: {  }
+name: Genres
+vid: genres
+description: 'Genres des médias.'
+hierarchy: 0
+weight: 0
