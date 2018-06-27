@@ -1,0 +1,8 @@
+{
+  "name": "drupal/allocine",
+  "type": "drupal-module",
+  "description": "Drupal module to retrieve informations from Allocine web site.",
+  "keywords": ["Drupal"],
+  "require": {
+  }
+}

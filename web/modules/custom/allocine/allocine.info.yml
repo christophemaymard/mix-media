@@ -1,0 +1,6 @@
+name: Allocine
+description: Retrieves informations from Allocine web site.
+package: Mix-Media
+
+type: module
+core: 8.x
