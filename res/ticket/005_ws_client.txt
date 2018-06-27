@@ -1,0 +1,18 @@
+Ticket: 005
+
+Description:
+Client pour le Web Service d'Allociné.
+
+
+
+-------------------------------------------------------------------------------
+-- 
+
+API
+api.allocine.fr
+
+Partner
+100043982026
+
+Secret key
+29d185d98c984a359e6e6f26a0474269
