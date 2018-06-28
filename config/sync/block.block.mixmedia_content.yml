@@ -1,0 +1,22 @@
+uuid: 0ff2fc00-cba8-4528-ab5c-881373904f34
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mixmedia
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: mixmedia_content
+theme: mixmedia
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

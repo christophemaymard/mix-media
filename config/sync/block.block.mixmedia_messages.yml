@@ -1,0 +1,22 @@
+uuid: e98205a1-7b8e-4a18-9fe0-b8d5faedd901
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mixmedia
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: mixmedia_messages
+theme: mixmedia
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }
