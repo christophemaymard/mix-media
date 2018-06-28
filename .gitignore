@@ -23,3 +23,7 @@
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore nodeJS modules.
+/node_modules/
+

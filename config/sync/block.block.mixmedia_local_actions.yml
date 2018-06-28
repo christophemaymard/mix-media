@@ -1,0 +1,20 @@
+uuid: 38867874-b608-4bf9-afca-ec015891fba7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - mixmedia
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: mixmedia_local_actions
+theme: mixmedia
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }
