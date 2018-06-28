@@ -15,4 +15,7 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_book_genres: true
+  field_book_synopsis: true
+  field_book_title: true

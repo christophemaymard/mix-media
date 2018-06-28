@@ -1,0 +1,31 @@
+Ticket: 002
+
+Description:
+Configurations générales de Drupal.
+
+-------------------------------------------------------------------------------
+-- Configuration: Sync
+
+Modules:
+- Configuration Split (config_split)
+
+
+-------------------------------------------------------------------------------
+-- Configuration: Dev
+
+Split:
+Label: Dev
+Folder: ../config/dev
+
+Modules:
+- Admin Toolbar (admin_toolbar)
+- Devel (devel)
+
+-------------------------------------------------------------------------------
+-- Configuration: Prod
+
+Split:
+Label: Prod
+Folder: ../config/prod
+
+

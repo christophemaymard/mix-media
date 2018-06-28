@@ -1,8 +1,9 @@
-uuid: 6bdc5286-4467-4697-9d52-18c85232999a
+uuid: 6ea59635-3456-474f-95b1-5d8ee76aeb90
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.movie.field_movie_countries
     - field.field.node.movie.field_movie_genres
     - field.field.node.movie.field_movie_release_date
@@ -14,13 +15,13 @@ dependencies:
     - datetime
     - text
     - user
-id: node.movie.default
+id: node.movie.full
 targetEntityType: node
 bundle: movie
-mode: default
+mode: full
 content:
   field_movie_countries:
-    weight: 5
+    weight: 106
     label: above
     settings:
       link: true
@@ -28,7 +29,7 @@ content:
     type: entity_reference_label
     region: content
   field_movie_genres:
-    weight: 4
+    weight: 105
     label: above
     settings:
       link: true
@@ -36,7 +37,7 @@ content:
     type: entity_reference_label
     region: content
   field_movie_release_date:
-    weight: 2
+    weight: 102
     label: above
     settings:
       format_type: medium
@@ -45,7 +46,7 @@ content:
     type: datetime_default
     region: content
   field_movie_runtime:
-    weight: 3
+    weight: 103
     label: above
     settings:
       thousand_separator: ''
@@ -54,14 +55,14 @@ content:
     type: number_integer
     region: content
   field_movie_synopsis:
-    weight: 1
+    weight: 104
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_movie_title:
-    weight: 0
+    weight: 101
     label: above
     settings:
       link_to_entity: false
@@ -69,8 +70,6 @@ content:
     type: string
     region: content
   links:
-    weight: 6
+    weight: 100
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden: {  }
