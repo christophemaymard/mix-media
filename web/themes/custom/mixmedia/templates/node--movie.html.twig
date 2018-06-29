@@ -83,7 +83,7 @@
     
     <div class="node-movie-content-container"><!-- Movie content Container -->
     <div class="dummy-image-movie-content"><!-- Left movie content -->
-      <img src="https://image.tmdb.org/t/p/w1280/9NXQyS56oJ8IhO0KjLEp1jfd9mg.jpg" width="300px" height="auto" />
+      <img src="https://image.tmdb.org/t/p/w1280/9NXQyS56oJ8IhO0KjLEp1jfd9mg.jpg" width="100%" height="auto" />
     </div>
     <!-- End left movie content -->
 
@@ -98,7 +98,7 @@
         <!-- Movie - release date -->
         <li>{{content.field_movie_release_date.value.0|date("d/m/Y")}}</li>
         <!-- Movie - Countries -->
-        <li>{{content.field_movie_countries.0|raw}}</li>
+        <li>{{content.field_movie_countries.0}}</li>
         <!-- Movie - runtime -->
         <li>{{content.field_movie_runtime.0}}</li>
       </ul>
