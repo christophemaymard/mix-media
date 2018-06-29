@@ -3,6 +3,15 @@ Ticket: 001
 Description:
 Theme pour le site Mix Media.
 
-
++ fait   - a faire
 -------------------------------------------------------------------------------
 
++ Initialisation et activation du theme MixMedia
++ Surcharge du template de node type movie (node--movie.html.twig)
++ Installation de la webfont
+
+
+- Modification Webdesign dans Twig
+  - redefinition des champs en Twig
+
+- Styles ...

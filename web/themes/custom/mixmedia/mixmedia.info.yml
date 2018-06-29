@@ -10,6 +10,7 @@ screenshot: images/screenshot.png
 # Uncomment these lines and change "mixmedia" to your theme name if you
 # need to add custom CSS or JS
 libraries:
+ - mixmedia/fonts #Addding custom font Stag
  - mixmedia/global
 
 # Regions are output in the page.html.twig
