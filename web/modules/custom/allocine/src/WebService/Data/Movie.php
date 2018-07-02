@@ -31,10 +31,10 @@ class Movie {
   public $runtime;
   
   /**
-   * The runtime.
-   * @var int
+   * The synopsis.
+   * @var string
    */
-  public $synopsis;
+  public $synopsis = '';
   
   /**
    * The nationalities.
