@@ -3,7 +3,9 @@
 namespace Drupal\allocine\WebService;
 
 use Drupal\allocine\UrlGenerator;
+use Drupal\allocine\Exception\WebServiceException;
 use Drupal\allocine\WebService\Data\DataFactory;
+use Drupal\allocine\WebService\Data\Movie;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use Psr\Http\Message\ResponseInterface;
@@ -63,6 +65,38 @@ class Client {
     $this->userAgent = $userAgent;
     $this->ip = $ip;
     $this->dataFactory = $dataFactory;
+  }
+  
+  /**
+   * Returns the informations related to a movie.
+   * 
+   * @param   QueryBuilder  $qb
+   * @return  Movie
+   * 
+   * @throws  ClientException     When a client error occured.
+   * @throws  WebServiceException When the response is an invalid JSON.
+   * 
+   * @see     QueryBuilder::setCode         The code of the movie.
+   * @see     QueryBuilder::setProfileLarge The verbosity of the informations.
+   */
+  public function getMovie(QueryBuilder $qb) {
+    // Generates the URL.
+    $url = $this->urlGenerator->generateApiMovie($qb);
+    
+    // Makes a request.
+    $response = $this->request($url);
+    
+    // Decodes the message body.
+    $body = json_decode((string)$response->getBody());
+    
+    if (!$body instanceof \stdClass || !property_exists($body, 'movie')) {
+      throw new WebServiceException(sprintf('The response is an invalid JSON movie: %s.', print_r($body, TRUE)));
+    }
+    
+    // Extracts the movie response.
+    $movie = $body->movie;
+    
+    return $this->dataFactory->createMovie($movie);
   }
   
   /**

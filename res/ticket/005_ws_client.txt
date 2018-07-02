@@ -14,5 +14,42 @@ api.allocine.fr
 Partner
 100043982026
 
-Secret key
+Salt used in signature (SALT_SIGNATURE)
 29d185d98c984a359e6e6f26a0474269
+
+HTTP method
+GET
+
+
+
+-------------------------------------------------------------------------------
+-- Common parameters for all actions
+
+Parameters:
+- format: 'json' (required)
+- partner: ID of the partner (must be '100043982026') (required)
+- sed: Year month day of the use ('Ymd') (required)
+- sig: The signature (required)
+
+
+
+-------------------------------------------------------------------------------
+-- Signature algorithm
+
+<?php
+$queryParameters = ''; // Depends on action.
+
+$signature = base64_encode(sha1(SALT_SIGNATURE.$queryParameters, TRUE));
+
+
+
+-------------------------------------------------------------------------------
+-- Action: api.allocine.fr/rest/v3/movie
+
+Query parameters:
+- code: The ID of movie (int)
+- profile: The informations verbosity (string); it can be:
+    - 'large'
+
+
+
