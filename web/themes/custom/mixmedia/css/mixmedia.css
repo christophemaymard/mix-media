@@ -32,7 +32,7 @@ p {
  * Titres des contenus
  */
 
-h1 { font-size: 30px;}
+h1 { font-size: 36px;}
 h2 { font-size: 24px;}
 h3 { font-size: 20px;}
 h4 { font-size: 18px;}
@@ -67,20 +67,25 @@ body.path-frontpage #block-mixmedia-branding img {
 /* ============================================================================
  * Node Movie
  */
+
+body.node--type-movie article[role="article"] {
+	margin-bottom: 50px;
+}
+
 .node-movie-content-container,
 .datas-movie-infos,
 .synopsis-movie-genre {
 	display: flex;
 }
-
 .dummy-image-movie-content {
 	width: 30%;
+	padding: 0;
+	margin: 0;
 }
 .node-movie-content-container .right-node-content {
 	padding: 0 2.5% 2.5%;
 	width: 65%;
 }
-
 .right-node-content h1 {
 	margin-bottom: 0;
 }
@@ -88,10 +93,14 @@ body.path-frontpage #block-mixmedia-branding img {
 	 font-family: 'Stag Sans';
 	 font-weight: 300;
 }
+.synopsis-movie-content h2 {
+	 margin: 0;
+	 padding: 0;
+}
 .synopsis-movie-genre a {
 	display: block;
 	padding: 7px 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	color: #fff;
 	background-color:#222;
 	text-transform: uppercase;
@@ -146,4 +155,45 @@ body.path-frontpage #block-mixmedia-branding img {
 .datas-movie-infos .movie-runtime:before {
 	content: "\f017";
 	color: #ACF173;
+}
+
+/* ============================================================================
+ * Mur Cinema Home
+ */
+.masonry { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px;
+  width: 100%;
+  margin:0 auto;
+}
+
+.masonry-brick {
+  flex: auto;
+  height: auto;
+  margin: 0 2% 2% 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  position: relative;
+}
+
+.masonry-brick img {
+	
+}
+
+.masonry-brick:nth-child(4n+1) {
+     width: 250px;
+ }
+
+  .masonry-brick:nth-child(4n+2){
+     width: 325px;
+  }
+  .masonry-brick:nth-child(4n+3){
+     width: 180px;
+  }
+  .masonry-brick:nth-child(4n+4){
+     width: 380px;
+  }
 }
