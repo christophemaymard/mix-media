@@ -9,3 +9,5 @@ services:
   allocine.url_generator:
     class: Drupal\allocine\UrlGenerator
     arguments: ['%allocine.url.api%', '%allocine.api.partner%', '%allocine.api.sig_salt%']
+  allocine.api.data_factory:
+    class: Drupal\allocine\WebService\Data\DataFactory
