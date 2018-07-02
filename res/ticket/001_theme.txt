@@ -5,10 +5,25 @@ Theme pour le site Mix Media.
 
 -------------------------------------------------------------------------------
 
-- Initialisation et activation du theme MixMedia
-- Surcharge du template de node type movie (node--movie.html.twig)
-- Installation de la webfont
-- Surcharge des champs du type de contenu movie (node--movie.html.twig)
-- Surcharge du titre dans les types de contenu (field--node--title.html.twig)
-- Pour l'affichage, ajout d'une image temporaire dans Twig pour caller la place du poster
-- Styles css... Work in progress.
+--- Theme MixMedia
+
+  - Initialisation et activation du theme MixMedia
+  - Surcharge du template de node type movie (node--movie.html.twig)
+  - Installation de la webfont
+
+--- Template de node Movie
+
+  - Surcharge des champs du type de contenu movie (node--movie.html.twig)
+  - Surcharge du titre dans les types de contenu (field--node--title.html.twig)
+  - Pour l'affichage, ajout d'une image temporaire dans Twig pour caller la place du poster
+  - Ajout de la librairie fontAwesome
+
+--- HomePage
+
+  - Surcharge de la homePage (page--front.html.twig)
+  - Pour l'affichage, ajout d'images directement dans le template pour caller la page d'accueil
+
+--- Css
+
+ - Styles css... Work in progress.
+ - Styles css... Work in progress -> HomePage
