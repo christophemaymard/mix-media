@@ -1,0 +1,21 @@
+parameters:
+  # The URL for the API of the web service.
+  allocine.url.api: 'api.allocine.fr'
+  # The identifier of the partner to use in the API of the web service.
+  allocine.api.partner: '100043982026'
+  # The salt used to compute the signature.
+  allocine.api.sig_salt: '29d185d98c984a359e6e6f26a0474269'
+  # The user-agent to use in the API of the web service.
+  # (must be an Android user-agent).
+  allocine.api.user_agent: 'Mozilla/5.0 (Linux; U; Android 4.1.3; fr-fr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30'
+  # The IP address to use in the API of the web service.
+  allocine.api.ip: '88.15.9.178'
+services:
+  allocine.url_generator:
+    class: Drupal\allocine\UrlGenerator
+    arguments: ['%allocine.url.api%', '%allocine.api.partner%', '%allocine.api.sig_salt%']
+  allocine.api.data_factory:
+    class: Drupal\allocine\WebService\Data\DataFactory
+  allocine.api.client:
+    class: Drupal\allocine\WebService\Client
+    arguments: ['@http_client', '@allocine.url_generator', '%allocine.api.user_agent%', '%allocine.api.ip%', '@allocine.api.data_factory' ]
