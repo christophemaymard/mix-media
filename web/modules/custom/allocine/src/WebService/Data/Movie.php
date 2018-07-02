@@ -41,4 +41,10 @@ class Movie {
    * @var Country[]
    */
   public $nationalities = [];
+  
+  /**
+   * The genres.
+   * @var Genre[]
+   */
+  public $genres = [];
 }
