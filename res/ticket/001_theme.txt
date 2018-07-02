@@ -3,6 +3,12 @@ Ticket: 001
 Description:
 Theme pour le site Mix Media.
 
-
 -------------------------------------------------------------------------------
 
+- Initialisation et activation du theme MixMedia
+- Surcharge du template de node type movie (node--movie.html.twig)
+- Installation de la webfont
+- Surcharge des champs du type de contenu movie (node--movie.html.twig)
+- Surcharge du titre dans les types de contenu (field--node--title.html.twig)
+- Pour l'affichage, ajout d'une image temporaire dans Twig pour caller la place du poster
+- Styles css... Work in progress.
