@@ -35,4 +35,10 @@ class Movie {
    * @var int
    */
   public $synopsis;
+  
+  /**
+   * The nationalities.
+   * @var Country[]
+   */
+  public $nationalities = [];
 }
