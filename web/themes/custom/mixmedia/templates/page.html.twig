@@ -79,6 +79,7 @@
       {% endif %}
 
       <header class="row" role="banner" aria-label="{{ 'Site header'|t }}">
+        <img class="img-responsive" src="{{ logopath }}" />
         {% if linked_site_name or linked_logo %}
           <div class="large-2 columns">
             {% if linked_logo %}
@@ -87,9 +88,9 @@
           </div>
           <div class="left large-4 columns">
             {% if is_front %}
-              <h1 id="site-name">{{ linked_site_name }}</h1>
+              <img class="img-responsive" src="{{ logopath }}" />
             {% else %}
-              <div id="site-name">{{ linked_site_name }}</div>
+              <img class="img-responsive" src="{{ logopath }}" />
             {% endif %}
           </div>
         {% endif %}

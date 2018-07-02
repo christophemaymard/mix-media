@@ -3,7 +3,6 @@
 ============================================================================
 ============================================================================ */
 
-
 /* ============================================================================
  * Global Styles
  */
@@ -37,6 +36,33 @@ h1 { font-size: 30px;}
 h2 { font-size: 24px;}
 h3 { font-size: 20px;}
 h4 { font-size: 18px;}
+
+/* ============================================================================
+ * HEADER
+ */
+
+ #block-mixmedia-main-menu {
+ 	display: none;
+ }
+
+#block-mixmedia-branding {
+	width: 200px;
+	margin: 40px 0;
+}
+
+body.path-frontpage #block-mixmedia-branding {
+	width: 300px;
+	margin: 40px auto 80px auto;
+}
+
+#block-mixmedia-branding img {
+	width: 200px;
+	height: auto;
+}
+
+body.path-frontpage #block-mixmedia-branding img {
+	width: 300px;
+}
 
 /* ============================================================================
  * Node Movie
@@ -79,11 +105,45 @@ h4 { font-size: 18px;}
 	background-color:#999;
 }
 .datas-movie-infos li {
-	margin: 0 10px;
+	margin: 0 7px;
+	position: relative;
+	padding-left: 23px;
+	font-weight: 400;
+	color: #555;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.datas-movie-infos li a {
+	color: #555;
+	font-weight: 400;
 }
 .datas-movie-infos li:first-child {
 	margin-left: 0;
 }
 .datas-movie-infos li:last-child {
 	margin-right: 0;
+}
+.datas-movie-infos li:before {
+	display: block;
+	font-family: FontAwesome;
+	position: absolute;
+	font-size: 20px;
+	left: 0;
+	top: -8px;
+	font-weight: normal;
+	color: #444;
+}
+.datas-movie-infos .movie-release-date:before {
+	content: "\f073";
+	color: #E95F7A;
+	font-size: 18px;
+	top: -7px;
+}
+.datas-movie-infos .movie-countries:before {
+	content: "\f0ac";
+	color: #A5B3FD;
+}
+.datas-movie-infos .movie-runtime:before {
+	content: "\f017";
+	color: #ACF173;
 }

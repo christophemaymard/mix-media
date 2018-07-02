@@ -11,6 +11,7 @@ screenshot: images/screenshot.png
 # need to add custom CSS or JS
 libraries:
  - mixmedia/fonts #Addding custom font Stag
+ - mixmedia/font-awesome #Addding custom font Awesome
  - mixmedia/global
 
 # Regions are output in the page.html.twig

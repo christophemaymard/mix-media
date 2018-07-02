@@ -79,29 +79,30 @@
 
   <div{{ content_attributes }}>
   {# {{ content|without('comment', 'links', 'field_tags') }}#}
-    
-    
     <div class="node-movie-content-container"><!-- Movie content Container -->
-    <div class="dummy-image-movie-content"><!-- Left movie content -->
-      <img src="https://image.tmdb.org/t/p/w1280/9NXQyS56oJ8IhO0KjLEp1jfd9mg.jpg" width="100%" height="auto" />
-    </div>
-    <!-- End left movie content -->
+      <div class="dummy-image-movie-content"><!-- Left movie content -->
+        <img src="https://image.tmdb.org/t/p/w1280/9NXQyS56oJ8IhO0KjLEp1jfd9mg.jpg" width="100%" height="auto" />
+      </div>
+      <!-- End left movie content -->
 
-    <!-- right movie content -->
-    <div class="right-node-content right-node-content-node-{{ node.id }}">
-      <!-- Movie - Title -->
-      <h1 class='node-title node-movie-title' {{ attributes }}>{{content.field_movie_title.0}}</h1>
-      <!-- Movie - Synopsis -->
-      <div class="synopsis-movie-genre"> {{content.field_movie_genres.0}}</div>
-      <div class="synopsis-movie-content">{{content.field_movie_synopsis.0}}</div>
-      <ul class="datas-movie-infos">
-        <!-- Movie - release date -->
-        <li>{{content.field_movie_release_date.value.0|date("d/m/Y")}}</li>
-        <!-- Movie - Countries -->
-        <li>{{content.field_movie_countries.0}}</li>
-        <!-- Movie - runtime -->
-        <li>{{content.field_movie_runtime.0}}</li>
-      </ul>
+      <!-- right movie content -->
+      <div class="right-node-content right-node-content-node-{{ node.id }}">
+        <!-- Movie - Title -->
+        <h1 class='node-title node-movie-title' {{ attributes }}>{{content.field_movie_title.0}}</h1>
+        <!-- Movie - Genre -->
+        <div class="synopsis-movie-genre"> {{content.field_movie_genres.0}}</div>
+        <!-- Movie - Synopsis -->
+        <div class="synopsis-movie-content">{{content.field_movie_synopsis.0}}</div>
+        
+        <!-- Movie - Informations sur le film -->
+        <ul class="datas-movie-infos">
+          <!-- Movie - release date -->
+          <li class="movie-release-date">{{content.field_movie_release_date.value.0|date("d/m/Y")}}</li>
+          <!-- Movie - Countries -->
+          <li class="movie-countries">{{content.field_movie_countries.0}}</li>
+          <!-- Movie - runtime -->
+          <li class="movie-runtime">{{content.field_movie_runtime.0}}</li>
+        </ul>
       </div><!-- End right movie content -->
     </div><!-- End movie content Container -->
 
