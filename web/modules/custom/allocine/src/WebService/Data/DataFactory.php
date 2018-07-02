@@ -10,6 +10,31 @@ namespace Drupal\allocine\WebService\Data;
  */
 class DataFactory {
   /**
+   * Creates a Movie data from the specified \stdClass instance.
+   * 
+   * @param   \stdClass   $movie
+   * @return  Movie   The created Movie data.
+   */
+  public function createMovie(\stdClass $movie) {
+    $data = new Movie();
+    $data->code = $movie->code;
+    $data->title = $movie->title;
+    $data->releaseDate = \DateTime::createFromFormat('Y-m-d', $movie->release->releaseDate);
+    $data->runtime = $movie->runtime;
+    $data->synopsis = $movie->synopsis;
+    
+    foreach ($movie->genre as $genre) {
+      $data->genres[] = $this->createGenre($genre);
+    }
+    
+    foreach ($movie->nationality as $country) {
+      $data->nationalities[] = $this->createCountry($country);
+    }
+    
+    return $data;
+  }
+  
+  /**
    * Creates a Genre data from the specified \stdClass instance.
    * 
    * @param   \stdClass   $genre
