@@ -4,5 +4,6 @@
   "description": "Drupal module to retrieve informations from Allocine web site.",
   "keywords": ["Drupal"],
   "require": {
+    "guzzlehttp/guzzle": "^6.0"
   }
 }
