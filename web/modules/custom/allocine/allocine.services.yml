@@ -1,0 +1,11 @@
+parameters:
+  # The URL for the API of the web service.
+  allocine.url.api: 'api.allocine.fr'
+  # The identifier of the partner to use in the API of the web service.
+  allocine.api.partner: '100043982026'
+  # The salt used to compute the signature.
+  allocine.api.sig_salt: '29d185d98c984a359e6e6f26a0474269'
+services:
+  allocine.url_generator:
+    class: Drupal\allocine\UrlGenerator
+    arguments: ['%allocine.url.api%', '%allocine.api.partner%', '%allocine.api.sig_salt%']
