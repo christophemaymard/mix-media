@@ -22,4 +22,18 @@ class DataFactory {
     
     return $data;
   }
+  
+  /**
+   * Creates a Country data from the specified \stdClass instance.
+   * 
+   * @param   \stdClass   $country
+   * @return  Country   The created Country data.
+   */
+  public function createCountry(\stdClass $country) {
+    $data = new Country();
+    $data->code = $country->code;
+    $data->name = $country->{'$'};
+    
+    return $data;
+  }
 }
