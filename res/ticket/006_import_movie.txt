@@ -1,0 +1,10 @@
+Ticket: 006
+
+Description:
+Importation de films par le biais du Web Service d'Allociné.
+
+
+
+-------------------------------------------------------------------------------
+-- 
+
