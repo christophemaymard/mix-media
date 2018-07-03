@@ -21,6 +21,7 @@ services:
     arguments: ['@http_client', '@allocine.url_generator', '%allocine.api.user_agent%', '%allocine.api.ip%', '@allocine.api.data_factory' ]
   allocine.import.subscriber:
     class: Drupal\allocine\Event\ImportSubscriber
+    arguments: ['@allocine.database', '@allocine.taxonomy.manager']
     tags:
       - { name: event_subscriber }
   allocine.database:
