@@ -26,4 +26,7 @@ services:
   allocine.database:
     class: Drupal\allocine\Database
     arguments: ['@database', '@datetime.time']
+  allocine.taxonomy.manager:
+    class: Drupal\allocine\TaxonomyManager
+    arguments: ['@entity_type.manager']
 
