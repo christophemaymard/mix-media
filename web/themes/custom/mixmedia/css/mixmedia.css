@@ -7,7 +7,7 @@
  * Global Styles
  */
 
-ul, li, h1, h2, h3, h4, p, div, span, a {
+ul, li, h1, h2, h3, h4, p, div, span, a, footer {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -164,6 +164,7 @@ body.node--type-movie article[role="article"] {
    column-count: 3;
     column-gap: 1em;
     width: 100%;
+    margin-bottom: 60px;
 }
 
 .masonry-brick {
@@ -174,4 +175,33 @@ body.node--type-movie article[role="article"] {
 
 .masonry-brick img {
 	
+}
+
+/* ============================================================================
+ * FOOTER
+ */
+
+.bottom-bar.panel {
+	text-align: center;
+}
+
+footer {
+	height: 300px;
+	max-width: 100%!important;
+	background: #222 url("../images/bg-footer.png") center top no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+footer #footer-logo {
+	position: absolute;
+	width: 150px;
+	left: 50%;
+	margin-left: -75px;
+	top: 100px;
+}
+
+footer #footer-logo img {
+	position: relative;
+	max-width: 150px;
 }

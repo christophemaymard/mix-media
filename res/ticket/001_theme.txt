@@ -26,4 +26,7 @@ Theme pour le site Mix Media.
 --- Css
 
  - Styles css... Work in progress.
+ - Styles css... Work in progress -> Header Logo
  - Styles css... Work in progress -> HomePage
+ 
+ Styles css... Work in progress -> Footer

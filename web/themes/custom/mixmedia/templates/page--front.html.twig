@@ -189,7 +189,7 @@
           </div>
         {% endif %}
       </div>
-      {% if page.footer_first or page.footer_middle or page.footer_last %}
+      {#% if page.footer_first or page.footer_middle or page.footer_last %}
         <footer class="row">
           {% if page.footer_first %}
             <div id="footer-first" class="large-4 columns">
@@ -207,14 +207,16 @@
             </div>
           {% endif %}
         </footer>
-      {% endif %}
-      <div class="bottom-bar panel">
-        <div class="row">
-          <div class="large-12 columns">
-          &copy; {{ "now"|date('Y') }} {{ site_name }} {{ 'All rights reserved.'|t }}
-          </div>
-        </div>
-      </div>
+      {% endif %#}
+
+      <!-- Debut faux footer -->
+        <footer class="row">
+            <div id="footer-first" class="large-4 columns">1</div>
+            <div id="footer-middle" class="large-4 columns">2</div>
+            <div id="footer-last" class="large-4 columns">3</div>
+            <div id="footer-logo" class="large-4 columns"><img src="/mix-media-dev/web/themes/custom/mixmedia/logo-white-t.png" /></div>
+        </footer>
+      <!-- End faux footer -->
     </div>
   </div>
 </div>
