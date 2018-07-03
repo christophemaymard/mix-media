@@ -6,5 +6,15 @@ Importation de films par le biais du Web Service d'Allociné.
 
 
 -------------------------------------------------------------------------------
--- 
+-- Database
+
+Table: allocine_country
+- id
+- ac_code: Country code in Allocine.
+- ac_name: Country name in Allocine.
+- tid: Term ID in Countries vocabulary.
+- created: Created timestamp.
+- updated: Updated timestamp.
+
+
 

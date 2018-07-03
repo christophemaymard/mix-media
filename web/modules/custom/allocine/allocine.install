@@ -40,6 +40,18 @@ function allocine_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
+      'created' => [
+        'description' => 'Created timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'updated' => [
+        'description' => 'Updated timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
     ],
     'primary key' => ['id'],
     'indexes' => [
