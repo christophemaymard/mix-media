@@ -23,4 +23,7 @@ services:
     class: Drupal\allocine\Event\ImportSubscriber
     tags:
       - { name: event_subscriber }
+  allocine.database:
+    class: Drupal\allocine\Database
+    arguments: ['@database', '@datetime.time']
 
