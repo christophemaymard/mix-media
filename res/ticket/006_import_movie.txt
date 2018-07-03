@@ -16,5 +16,13 @@ Table: allocine_country
 - created: Created timestamp.
 - updated: Updated timestamp.
 
+Table: allocine_genre
+- id
+- ac_code: Genre code in Allocine.
+- ac_name: Genre name in Allocine.
+- tid: Term ID in Genres vocabulary.
+- created: Created timestamp.
+- updated: Updated timestamp.
+
 
 

@@ -60,5 +60,52 @@ function allocine_schema() {
     ],
   ];
   
+  $schema['allocine_genre'] = [
+    'description' => 'Mapping between Allocine genres and terms from Genres vocabulary.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_code' => [
+        'description' => 'Genre code in Allocine.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_name' => [
+        'description' => 'Genre name in Allocine.',
+        'type' => 'char',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'tid' => [
+        'description' => 'Term ID in Genres vocabulary.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Created timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'updated' => [
+        'description' => 'Updated timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'allocine_genre_ac_code' => ['ac_code'],
+      'allocine_genre_tid' => ['tid'],
+    ],
+  ];
+  
   return $schema;
 }
