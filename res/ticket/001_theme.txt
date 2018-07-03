@@ -23,10 +23,10 @@ Theme pour le site Mix Media.
   - Surcharge de la homePage (page--front.html.twig)
   - Pour l'affichage, ajout d'images directement dans le template pour caller la page d'accueil
 
---- Css
+--- Intégration
 
- - Styles css... Work in progress.
  - Styles css... Work in progress -> Header Logo
  - Styles css... Work in progress -> HomePage
- 
- Styles css... Work in progress -> Footer
+ - Styles css... Work in progress -> Placement et design du footer global, intégration + logo central du footer
+ - Intégration des blocs de menus dans le footer
+ - Intégration du bouton "tous les films"

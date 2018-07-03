@@ -6,7 +6,6 @@
 /* ============================================================================
  * Global Styles
  */
-
 ul, li, h1, h2, h3, h4, p, div, span, a, footer {
 	list-style: none;
 	margin: 0;
@@ -15,13 +14,11 @@ ul, li, h1, h2, h3, h4, p, div, span, a, footer {
 	font-weight: 300;
 	text-decoration: none;
 }
-
 h1, h2, h3, h4 {
 	font-family: 'Stag';
     font-weight: 500;
     margin-bottom: 20px;
 }
-
 p {
 	font-size: 16px;
 	line-height: 24px;
@@ -31,7 +28,6 @@ p {
 /* ============================================================================
  * Titres des contenus
  */
-
 h1 { font-size: 36px;}
 h2 { font-size: 24px;}
 h3 { font-size: 20px;}
@@ -44,22 +40,18 @@ h4 { font-size: 18px;}
  #block-mixmedia-main-menu {
  	display: none;
  }
-
 #block-mixmedia-branding {
 	width: 200px;
 	margin: 40px 0;
 }
-
 body.path-frontpage #block-mixmedia-branding {
 	width: 250px;
 	margin: 40px auto 80px auto;
 }
-
 #block-mixmedia-branding img {
 	width: 150px;
 	height: auto;
 }
-
 body.path-frontpage #block-mixmedia-branding img {
 	width: 250px;
 }
@@ -108,7 +100,7 @@ body.node--type-movie article[role="article"] {
 	line-height: 13px;
 	font-weight: 500;
 	border-radius: 2px;
-	-webkit-transition: background-color 200ms ease-out;
+	transition: background-color 200ms ease-out;
 }
 .synopsis-movie-genre a:hover {
 	background-color:#999;
@@ -166,24 +158,56 @@ body.node--type-movie article[role="article"] {
     width: 100%;
     margin-bottom: 60px;
 }
-
 .masonry-brick {
   background-color: #eee;
     display: inline-block;
     margin: 0 0 1em;
+    overflow: hidden;
+    border-radius: 5px;
 }
 
-.masonry-brick img {
-	
+.touslesfilms-btn {
+	display: block;
+	width: 450px;
+	padding: 20px 0;
+	margin:60px auto;
+	text-align: center;
+	position: relative;
+	font-size: 20px;
+	line-height: 20px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+	background-color: rgba(0,0,0,0.05);
+	font-family: 'Stag';
+    font-weight: 500;
+    color: rgba(0,0,0,1);
+    border-radius: 10px;
+    transition: all 200ms ease-out;
 }
+
+.touslesfilms-btn:hover {
+	background-color: rgba(0,0,0,1);
+	color: rgba(255,255,255,1);
+}
+.touslesfilms-btn:before,
+.touslesfilms-btn:after {
+	content: "\f008";
+	font-family: FontAwesome;
+	font-weight: normal;
+	position: absolute;
+	color: rgba(0,0,0,1);
+	font-size: 20px;
+}
+
+.touslesfilms-btn:hover::before,
+.touslesfilms-btn:hover::after { color: rgba(255,255,255,1); }
+
+.touslesfilms-btn:before { left: 20px; }
+.touslesfilms-btn:after { right: 20px; }
 
 /* ============================================================================
  * FOOTER
  */
-
-.bottom-bar.panel {
-	text-align: center;
-}
+.bottom-bar.panel { text-align: center; }
 
 footer {
 	height: 300px;
@@ -193,15 +217,37 @@ footer {
 	position: relative;
 }
 
-footer #footer-logo {
-	position: absolute;
-	width: 150px;
-	left: 50%;
-	margin-left: -75px;
-	top: 100px;
+footer .columns {
+	margin-top: 40px;
+	width: 20%;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+footer .columns h3 {
+	margin: 50px 0 10px 0;
+	color: #FFFFFF;
 }
 
+footer #footer-logo {
+	position: relative;
+	text-align: center;
+}
 footer #footer-logo img {
 	position: relative;
 	max-width: 150px;
+	margin-top: 55px;
+}
+.menu-footer li a,
+.txt-footer-apropos {
+	color: rgba(255,255,255,0.6);
+	transition: color 200ms ease-out;
+	font-family: 'Stag';
+}
+.txt-footer-apropos strong {
+	font-weight: 500;
+	color: rgba(255,255,255,0.9);
+}
+.menu-footer li a:hover {
+	color: rgba(255,255,255,1);
 }
