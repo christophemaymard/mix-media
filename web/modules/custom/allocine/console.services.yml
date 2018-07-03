@@ -1,0 +1,6 @@
+services:
+  allocine.command.drupal.movie_import:
+    class: Drupal\allocine\Command\MovieImportCommand
+    arguments: ['@allocine.import.movie']
+    tags:
+      - { name: drupal.command }
