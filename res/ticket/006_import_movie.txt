@@ -1,0 +1,34 @@
+Ticket: 006
+
+Description:
+Importation de films par le biais du Web Service d'Allociné.
+
+
+
+-------------------------------------------------------------------------------
+-- Database
+
+Table: allocine_country
+- id
+- ac_code: Country code in Allocine.
+- ac_name: Country name in Allocine.
+- tid: Term ID in Countries vocabulary.
+- created: Created timestamp.
+- updated: Updated timestamp.
+
+Table: allocine_genre
+- id
+- ac_code: Genre code in Allocine.
+- ac_name: Genre name in Allocine.
+- tid: Term ID in Genres vocabulary.
+- created: Created timestamp.
+- updated: Updated timestamp.
+
+
+
+-------------------------------------------------------------------------------
+-- Events
+
+Event: allocine.country.imported
+
+Event: allocine.genre.imported

@@ -19,3 +19,18 @@ services:
   allocine.api.client:
     class: Drupal\allocine\WebService\Client
     arguments: ['@http_client', '@allocine.url_generator', '%allocine.api.user_agent%', '%allocine.api.ip%', '@allocine.api.data_factory' ]
+  allocine.import.subscriber:
+    class: Drupal\allocine\Event\ImportSubscriber
+    arguments: ['@allocine.database', '@allocine.taxonomy.manager']
+    tags:
+      - { name: event_subscriber }
+  allocine.database:
+    class: Drupal\allocine\Database
+    arguments: ['@database', '@datetime.time']
+  allocine.taxonomy.manager:
+    class: Drupal\allocine\TaxonomyManager
+    arguments: ['@entity_type.manager']
+  allocine.import.movie:
+    class: Drupal\allocine\Importing\MovieImporter
+    arguments: ['@allocine.api.client', '@entity_type.manager', '@event_dispatcher']
+

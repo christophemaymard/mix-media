@@ -1,0 +1,8 @@
+description: 'Import a movie from Allocine.'
+options: {}
+arguments:
+  code: 'The Allocine code of the movie to import.'
+messages:
+  execute: 'Import movie with code "@code".'
+  success: 'The movie "@title" (@code) has been imported successfully from Allocine.'
+  error: '@message'
