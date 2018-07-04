@@ -6,6 +6,15 @@ Importation de films par le biais du Web Service d'Allociné.
 
 
 -------------------------------------------------------------------------------
+-- Commands
+
+
+Command: Import a movie from Allocine
+./bin/drupal allocine:movie:import ALLOCINE_CODE
+
+
+
+-------------------------------------------------------------------------------
 -- Database
 
 Table: allocine_country
@@ -24,6 +33,14 @@ Table: allocine_genre
 - created: Created timestamp.
 - updated: Updated timestamp.
 
+Table: allocine_movie
+- id
+- ac_code: Movie code in Allocine.
+- ac_title: Movie title in Allocine.
+- nid: Node ID of the movie.
+- created: Created timestamp.
+- updated: Updated timestamp.
+
 
 
 -------------------------------------------------------------------------------
@@ -32,3 +49,5 @@ Table: allocine_genre
 Event: allocine.country.imported
 
 Event: allocine.genre.imported
+
+Event: allocine.movie.imported
