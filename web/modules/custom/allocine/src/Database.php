@@ -91,6 +91,35 @@ class Database {
   }
   
   /**
+   * Returns the term ID of the country with the specified Allocine country 
+   * code.
+   * 
+   * @param   int   $code   The Allocine code of the country to retrieve.
+   * @return  int   The term ID of the country.
+   * 
+   * @throws  DatabaseException When the term ID cannot be determined for the country.
+   */
+  public function getCountryTermIdByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_COUNTRY, 'ac')
+      ->fields('ac', ['tid'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    if (count($results) != 1) {
+      throw new DatabaseException(sprintf(
+        'The term ID, in the "countries" vocabulary, cannot be determined for the Allocine country code "%s".', 
+        $code
+      ));
+    }
+    
+    $term = array_pop($results);
+    
+    return $term->tid;
+  }
+  
+  /**
    * Creates a record in the allocine_country table that maps a genre from 
    * Allocine and a term from the 'genres' vocabulary.
    * 

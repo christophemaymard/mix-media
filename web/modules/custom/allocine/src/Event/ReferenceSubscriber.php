@@ -33,6 +33,9 @@ class ReferenceSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events = [];
+    $events[MovieReferenceCountryEvent::NAME] = [
+      ['onMovieReferenceCountries', 0],
+    ];
     
     return $events;
   }
@@ -51,5 +54,27 @@ class ReferenceSubscriber implements EventSubscriberInterface {
     $this->database = $database;
     $this->taxonomyManager = $taxonomyManager;
     $this->contentTypeManager = $contentTypeManager;
+  }
+  
+  /**
+   * Actions when a allocine.movie.reference.country event is dispatched.
+   * 
+   * @param   MovieReferenceCountryEvent  $event  The event to process.
+   */
+  public function onMovieReferenceCountries(MovieReferenceCountryEvent $event) {
+    // Retrieves the node of the movie.
+    $movieNid = $this->database->getMovieNodeIdByCode($event->getMovie()->code);
+    $movieNode = $this->contentTypeManager->getMovieContentTypeByNid($movieNid);
+    
+    // Retrieves the term IDs.
+    $countryTids = [];
+    
+    foreach ($event->getCountries() as $country) {
+      $countryTids[] = $this->database->getCountryTermIdByCode($country->code);
+    }
+    
+    // Updates the country references.
+    $movieNode->set('field_movie_countries', $countryTids);
+    $movieNode->save();
   }
 }

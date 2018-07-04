@@ -5,6 +5,7 @@ namespace Drupal\allocine\Importing;
 use Drupal\allocine\Event\CountryImportedEvent;
 use Drupal\allocine\Event\GenreImportedEvent;
 use Drupal\allocine\Event\MovieImportedEvent;
+use Drupal\allocine\Event\MovieReferenceCountryEvent;
 use Drupal\allocine\WebService\Client;
 use Drupal\allocine\WebService\QueryBuilder;
 use Drupal\allocine\WebService\Data\Movie;
@@ -27,8 +28,8 @@ class MovieImporter {
   /**
    * Constructor.
    * 
-   * @param   Client                        $client 
-   * @param   EventDispatcherInterface      $dispatcher The event dispatcher.
+   * @param   Client                    $client 
+   * @param   EventDispatcherInterface  $dispatcher The event dispatcher.
    */
   public function __construct(
     Client $client, 
@@ -65,6 +66,12 @@ class MovieImporter {
     
     // Imports the movie.
     $this->dispatcher->dispatch(MovieImportedEvent::NAME, new MovieImportedEvent($movie));
+    
+    // 
+    $this->dispatcher->dispatch(
+      MovieReferenceCountryEvent::NAME, 
+      new MovieReferenceCountryEvent($movie, $movie->nationalities)
+    );
     
     return $movie;
   }
