@@ -1,8 +1,9 @@
-uuid: 214bfcbb-d411-4e44-9e59-58bdea73ff7e
+uuid: eb36ee31-639b-44f5-8666-569d689fba11
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.book.field_book_couverture
     - field.field.node.book.field_book_genres
     - field.field.node.book.field_book_synopsis
@@ -12,10 +13,10 @@ dependencies:
     - image
     - text
     - user
-id: node.book.default
+id: node.book.full
 targetEntityType: node
 bundle: book
-mode: default
+mode: full
 content:
   field_book_couverture:
     weight: 104
@@ -52,6 +53,4 @@ content:
   links:
     weight: 100
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden: {  }

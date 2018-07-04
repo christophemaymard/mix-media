@@ -28,4 +28,15 @@ Split:
 Label: Prod
 Folder: ../config/prod
 
+-------------------------------------------------------------------------------
+Configuration: Type de contenu BOOK
+
+- Ajout du champ Couverture du livre :
+	Type de champ: Image
+	Label: Couverture du livre
+	Machine_name: field_book_couverture
+
+- Réorganisation des champs dans le form display
+- Activation du display mode "Full" dans le content display
+- Export des configurations (champ couverture du livre, form display, content display full)
 
