@@ -93,7 +93,7 @@ ul.movie-countries {
 .synopsis-movie-genre a {
 	display: block;
 	padding: 7px 10px;
-	margin-bottom: 20px;
+	margin: 0 0 20px 7px;
 	color: #fff;
 	background-color:#222;
 	text-transform: uppercase;
@@ -136,7 +136,6 @@ ul.movie-countries:before {
 	font-weight: normal;
 	color: #444;
 }
-
 .datas-movie-infos .movie-release-date:before {
 	content: "\f073";
 	color: #E95F7A;
@@ -173,6 +172,13 @@ ul.movie-countries li:last-child::after {
 	content: "";
 }
 
+ul.movie-countries li a {
+	transition: color 200ms ease-out;
+}
+
+ul.movie-countries li a:hover {
+	color: #A5B3FD;
+}
 
 /* ============================================================================
  * Mur Cinema Home
@@ -190,7 +196,6 @@ ul.movie-countries li:last-child::after {
     overflow: hidden;
     border-radius: 5px;
 }
-
 .touslesfilms-btn {
 	display: block;
 	width: 450px;
@@ -208,7 +213,6 @@ ul.movie-countries li:last-child::after {
     border-radius: 10px;
     transition: all 200ms ease-out;
 }
-
 .touslesfilms-btn:hover {
 	background-color: rgba(0,0,0,1);
 	color: rgba(255,255,255,1);
@@ -222,7 +226,6 @@ ul.movie-countries li:last-child::after {
 	color: rgba(0,0,0,1);
 	font-size: 20px;
 }
-
 .touslesfilms-btn:hover::before,
 .touslesfilms-btn:hover::after { color: rgba(255,255,255,1); }
 

@@ -90,7 +90,13 @@
         <!-- Movie - Title -->
         <h1 class='node-title node-movie-title' {{ attributes }}>{{content.field_movie_title.0}}</h1>
         <!-- Movie - Genre -->
-        <div class="synopsis-movie-genre"> {{content.field_movie_genres.0}}</div>
+        <div class="synopsis-movie-genre">
+            {% for item in content.field_movie_genres %}
+            {% if item['#title'] %}
+              <div class="movie-genres-item"><a href="{{ item['#url'] }}">{{ item['#title'] }}</a></div>
+            {% endif %}
+           {% endfor %}
+        </div>
         <!-- Movie - Synopsis -->
         <div class="synopsis-movie-content">{{content.field_movie_synopsis.0}}</div>
         
@@ -103,7 +109,7 @@
           <ul class="movie-countries">
            {% for item in content.field_movie_countries %}
             {% if item['#title'] %}
-              <li class="movie-countries-item">{{ item['#title'] }}</li>
+              <li class="movie-countries-item"><a href="{{ item['#url'] }}">{{ item['#title'] }}</a></li>
             {% endif %}
            {% endfor %}
           </ul>
