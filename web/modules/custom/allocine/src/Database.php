@@ -21,6 +21,11 @@ class Database {
   const TBL_GENRE = 'allocine_genre';
   
   /**
+   * The name of the table.
+   */
+  const TBL_MOVIE = 'allocine_movie';
+  
+  /**
    * The database connection.
    * @var Connection
    */
@@ -118,6 +123,48 @@ class Database {
   public function hasGenreByCode($code) {
     $results = $this->database
       ->select(self::TBL_GENRE, 'ac')
+      ->fields('ac', ['id'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    return count($results) > 0;
+  }
+  
+  /**
+   * Creates a record in the allocine_movie table that maps a movie from 
+   * Allocine and a 'movie' content type.
+   * 
+   * @param   int     $code     The Allocine movie code.
+   * @param   string  $title    The Allocine movie title. 
+   * @param   int     $nid      The node ID.
+   * @return  
+   */
+  public function createMovie($code, $title, $nid) {
+    $createdTime = $this->time->getCurrentTime();
+    
+    return $this->database
+      ->insert(self::TBL_MOVIE)
+      ->fields([
+        'ac_code' => $code,
+        'ac_title' => $title,
+        'nid' => $nid,
+        'created' => $createdTime,
+        'updated' => $createdTime,
+      ])
+      ->execute();
+  }
+  
+  /**
+   * Indicates whether a record with the specified Allocine movie code is 
+   * stored in the allocine_movie table.
+   * 
+   * @param   int   $code   The Allocine movie code.
+   * @return  bool
+   */
+  public function hasMovieByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_MOVIE, 'ac')
       ->fields('ac', ['id'])
       ->condition('ac_code', $code)
       ->execute()
