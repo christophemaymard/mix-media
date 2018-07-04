@@ -4,6 +4,7 @@ namespace Drupal\allocine\Importing;
 
 use Drupal\allocine\Event\CountryImportedEvent;
 use Drupal\allocine\Event\GenreImportedEvent;
+use Drupal\allocine\Event\MovieImportedEvent;
 use Drupal\allocine\WebService\Client;
 use Drupal\allocine\WebService\QueryBuilder;
 use Drupal\allocine\WebService\Data\Movie;
@@ -70,6 +71,9 @@ class MovieImporter {
     foreach ($movie->genres as $genre) {
       $this->dispatcher->dispatch(GenreImportedEvent::NAME, new GenreImportedEvent($genre));
     }
+    
+    // Imports the movie.
+    $this->dispatcher->dispatch(MovieImportedEvent::NAME, new MovieImportedEvent($movie));
     
     return $movie;
   }

@@ -2,6 +2,7 @@
 
 namespace Drupal\allocine\Event;
 
+use Drupal\allocine\ContentTypeManager;
 use Drupal\allocine\Database;
 use Drupal\allocine\TaxonomyManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -22,6 +23,12 @@ class ImportSubscriber implements EventSubscriberInterface {
   private $taxonomyManager;
   
   /**
+   * The content type manager.
+   * @var ContentTypeManager
+   */
+  private $contentTypeManager;
+  
+  /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
@@ -32,6 +39,9 @@ class ImportSubscriber implements EventSubscriberInterface {
     $events[GenreImportedEvent::NAME] = [
       ['onImportGenre', 0],
     ];
+    $events[MovieImportedEvent::NAME] = [
+      ['onImportMovie', 0],
+    ];
     
     return $events;
   }
@@ -39,12 +49,17 @@ class ImportSubscriber implements EventSubscriberInterface {
   /**
    * Constructor.
    * 
-   * @param   Database          $database
-   * @param   TaxonomyManager   $taxonomyManager    The entity type manager.
+   * @param   Database              $database
+   * @param   TaxonomyManager       $taxonomyManager    The taxonomy manager.
+   * @param   ContentTypeManager    $contentTypeManager The content type manager.
    */
-  public function __construct(Database $database, TaxonomyManager $taxonomyManager) {
+  public function __construct(
+    Database $database, 
+    TaxonomyManager $taxonomyManager,
+    ContentTypeManager $contentTypeManager) {
     $this->database = $database;
     $this->taxonomyManager = $taxonomyManager;
+    $this->contentTypeManager = $contentTypeManager;
   }
   
   /**
@@ -80,6 +95,29 @@ class ImportSubscriber implements EventSubscriberInterface {
       
       // Creates the mapping between the Allocine genre and the 'genres' term.
       $this->database->createGenre($genre->code, $genre->name, $genreTerm->id());
+    }
+  }
+  
+  /**
+   * Actions when a MovieImportedEvent::NAME event is dispatched.
+   * 
+   * @param   MovieImportedEvent  $event  The event to process.
+   */
+  public function onImportMovie(MovieImportedEvent $event) {
+    $movie = $event->getMovie();
+    
+    // Determines whether a movie is already mapped with a content type.
+    if (!$this->database->hasMovieByCode($movie->code)) {
+      // Creates a 'movie' content type.
+      $movieContentType = $this->contentTypeManager->createMovieContentType(
+        $movie->title,
+        $movie->synopsis,
+        $movie->runtime,
+        $movie->releaseDate
+      );
+      
+      // Creates the mapping between the Allocine movie and the 'movie' content type.
+      $this->database->createMovie($movie->code, $movie->title, $movieContentType->id());
     }
   }
 }

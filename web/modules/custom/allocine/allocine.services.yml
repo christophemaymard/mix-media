@@ -21,7 +21,7 @@ services:
     arguments: ['@http_client', '@allocine.url_generator', '%allocine.api.user_agent%', '%allocine.api.ip%', '@allocine.api.data_factory' ]
   allocine.import.subscriber:
     class: Drupal\allocine\Event\ImportSubscriber
-    arguments: ['@allocine.database', '@allocine.taxonomy.manager']
+    arguments: ['@allocine.database', '@allocine.taxonomy.manager', '@allocine.content_type.manager']
     tags:
       - { name: event_subscriber }
   allocine.database:
@@ -33,4 +33,8 @@ services:
   allocine.import.movie:
     class: Drupal\allocine\Importing\MovieImporter
     arguments: ['@allocine.api.client', '@entity_type.manager', '@event_dispatcher']
+  allocine.content_type.manager:
+    class: Drupal\allocine\ContentTypeManager
+    arguments: ['@entity_type.manager']
+
 
