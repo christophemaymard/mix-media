@@ -51,3 +51,10 @@ Event: allocine.country.imported
 Event: allocine.genre.imported
 
 Event: allocine.movie.imported
+
+Event: allocine.movie.reference.country
+
+Event: allocine.movie.reference.genre
+
+
+
