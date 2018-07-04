@@ -66,7 +66,8 @@ body.node--type-movie article[role="article"] {
 
 .node-movie-content-container,
 .datas-movie-infos,
-.synopsis-movie-genre {
+.synopsis-movie-genre,
+ul.movie-countries {
 	display: flex;
 }
 .dummy-image-movie-content {
@@ -124,7 +125,8 @@ body.node--type-movie article[role="article"] {
 .datas-movie-infos li:last-child {
 	margin-right: 0;
 }
-.datas-movie-infos li:before {
+.datas-movie-infos li:before,
+ul.movie-countries:before {
 	display: block;
 	font-family: FontAwesome;
 	position: absolute;
@@ -134,13 +136,14 @@ body.node--type-movie article[role="article"] {
 	font-weight: normal;
 	color: #444;
 }
+
 .datas-movie-infos .movie-release-date:before {
 	content: "\f073";
 	color: #E95F7A;
 	font-size: 18px;
 	top: -7px;
 }
-.datas-movie-infos .movie-countries:before {
+.datas-movie-infos ul.movie-countries:before {
 	content: "\f0ac";
 	color: #A5B3FD;
 }
@@ -148,6 +151,28 @@ body.node--type-movie article[role="article"] {
 	content: "\f017";
 	color: #ACF173;
 }
+
+ul.movie-countries {
+	position: relative;
+	padding-left: 23px;
+	margin: 0 0 0 7px;
+}
+
+ul.movie-countries li {
+	padding: 0;
+	margin: 0;
+}
+
+ul.movie-countries li:after {
+	content: "/";
+	display: inline-block;
+	padding: 0 3px;
+}
+
+ul.movie-countries li:last-child::after {
+	content: "";
+}
+
 
 /* ============================================================================
  * Mur Cinema Home
