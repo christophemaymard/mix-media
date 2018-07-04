@@ -3,6 +3,7 @@
 namespace Drupal\allocine;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Represents a taxonomy manager.
@@ -27,7 +28,7 @@ class TaxonomyManager {
    * Creates a term with the specified name into the 'countries' vocabulary.
    * 
    * @param   string    $name The name of the country.
-   * @return  type
+   * @return  Term  The instance of the created term.
    */
   public function createCountryTerm($name) {
     // Creates the 'countries' term.
