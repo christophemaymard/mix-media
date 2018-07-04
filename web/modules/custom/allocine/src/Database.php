@@ -2,6 +2,7 @@
 
 namespace Drupal\allocine;
 
+use Drupal\allocine\Exception\DatabaseException;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Database\Connection;
 
@@ -171,5 +172,33 @@ class Database {
       ->fetchAll();
     
     return count($results) > 0;
+  }
+  
+  /**
+   * Returns the node ID of the movie with the specified Allocine movie code.
+   * 
+   * @param   int   $code   The Allocine code of the movie to retrieve.
+   * @return  int   The node ID of the movie.
+   * 
+   * @throws  DatabaseException When the node ID cannot be determined for the movie.
+   */
+  public function getMovieNodeIdByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_MOVIE, 'ac')
+      ->fields('ac', ['nid'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    if (count($results) != 1) {
+      throw new DatabaseException(sprintf(
+        'The node ID cannot be determined for the Allocine movie code "%s".', 
+        $code
+      ));
+    }
+    
+    $node = array_pop($results);
+    
+    return $node->nid;
   }
 }
