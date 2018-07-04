@@ -24,6 +24,11 @@ services:
     arguments: ['@allocine.database', '@allocine.taxonomy.manager', '@allocine.content_type.manager']
     tags:
       - { name: event_subscriber }
+  allocine.reference.subscriber:
+    class: Drupal\allocine\Event\ReferenceSubscriber
+    arguments: ['@allocine.database', '@allocine.taxonomy.manager', '@allocine.content_type.manager']
+    tags:
+      - { name: event_subscriber }
   allocine.database:
     class: Drupal\allocine\Database
     arguments: ['@database', '@datetime.time']
