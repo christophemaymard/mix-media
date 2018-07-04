@@ -6,6 +6,7 @@ use Drupal\allocine\Event\CountryImportedEvent;
 use Drupal\allocine\Event\GenreImportedEvent;
 use Drupal\allocine\Event\MovieImportedEvent;
 use Drupal\allocine\Event\MovieReferenceCountryEvent;
+use Drupal\allocine\Event\MovieReferenceGenreEvent;
 use Drupal\allocine\WebService\Client;
 use Drupal\allocine\WebService\QueryBuilder;
 use Drupal\allocine\WebService\Data\Movie;
@@ -71,6 +72,12 @@ class MovieImporter {
     $this->dispatcher->dispatch(
       MovieReferenceCountryEvent::NAME, 
       new MovieReferenceCountryEvent($movie, $movie->nationalities)
+    );
+    
+    // 
+    $this->dispatcher->dispatch(
+      MovieReferenceGenreEvent::NAME, 
+      new MovieReferenceGenreEvent($movie, $movie->genres)
     );
     
     return $movie;

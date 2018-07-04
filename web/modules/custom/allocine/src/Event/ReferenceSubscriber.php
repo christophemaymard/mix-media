@@ -36,6 +36,9 @@ class ReferenceSubscriber implements EventSubscriberInterface {
     $events[MovieReferenceCountryEvent::NAME] = [
       ['onMovieReferenceCountries', 0],
     ];
+    $events[MovieReferenceGenreEvent::NAME] = [
+      ['onMovieReferenceGenres', 0],
+    ];
     
     return $events;
   }
@@ -75,6 +78,28 @@ class ReferenceSubscriber implements EventSubscriberInterface {
     
     // Updates the country references.
     $movieNode->set('field_movie_countries', $countryTids);
+    $movieNode->save();
+  }
+  
+  /**
+   * Actions when a allocine.movie.reference.genre event is dispatched.
+   * 
+   * @param   MovieReferenceGenreEvent  $event  The event to process.
+   */
+  public function onMovieReferenceGenres(MovieReferenceGenreEvent $event) {
+    // Retrieves the node of the movie.
+    $movieNid = $this->database->getMovieNodeIdByCode($event->getMovie()->code);
+    $movieNode = $this->contentTypeManager->getMovieContentTypeByNid($movieNid);
+    
+    // Retrieves the term IDs.
+    $genreTids = [];
+    
+    foreach ($event->getGenres() as $genre) {
+      $genreTids[] = $this->database->getGenreTermIdByCode($genre->code);
+    }
+    
+    // Updates the genre references.
+    $movieNode->set('field_movie_genres', $genreTids);
     $movieNode->save();
   }
 }

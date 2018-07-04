@@ -162,6 +162,34 @@ class Database {
   }
   
   /**
+   * Returns the term ID of the genre with the specified Allocine genre code.
+   * 
+   * @param   int   $code   The Allocine code of the genre to retrieve.
+   * @return  int   The term ID of the genre.
+   * 
+   * @throws  DatabaseException When the term ID cannot be determined for the genre.
+   */
+  public function getGenreTermIdByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_GENRE, 'ac')
+      ->fields('ac', ['tid'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    if (count($results) != 1) {
+      throw new DatabaseException(sprintf(
+        'The term ID, in the "genres" vocabulary, cannot be determined for the Allocine genre code "%s".', 
+        $code
+      ));
+    }
+    
+    $term = array_pop($results);
+    
+    return $term->tid;
+  }
+  
+  /**
    * Creates a record in the allocine_movie table that maps a movie from 
    * Allocine and a 'movie' content type.
    * 
