@@ -32,7 +32,7 @@ services:
     arguments: ['@entity_type.manager']
   allocine.import.movie:
     class: Drupal\allocine\Importing\MovieImporter
-    arguments: ['@allocine.api.client', '@entity_type.manager', '@event_dispatcher']
+    arguments: ['@allocine.api.client', '@event_dispatcher']
   allocine.content_type.manager:
     class: Drupal\allocine\ContentTypeManager
     arguments: ['@entity_type.manager']

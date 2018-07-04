@@ -8,7 +8,6 @@ use Drupal\allocine\Event\MovieImportedEvent;
 use Drupal\allocine\WebService\Client;
 use Drupal\allocine\WebService\QueryBuilder;
 use Drupal\allocine\WebService\Data\Movie;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -21,11 +20,6 @@ class MovieImporter {
   private $client;
   
   /**
-   * @var EntityTypeManagerInterface
-   */
-  private $etm;
-  
-  /**
    * @var EventDispatcherInterface
    */
   private $dispatcher;
@@ -34,15 +28,12 @@ class MovieImporter {
    * Constructor.
    * 
    * @param   Client                        $client 
-   * @param   EntityTypeManagerInterface    $etm        The entity type manager used.
    * @param   EventDispatcherInterface      $dispatcher The event dispatcher.
    */
   public function __construct(
     Client $client, 
-    EntityTypeManagerInterface $etm,
     EventDispatcherInterface $dispatcher) {
     $this->client = $client;
-    $this->etm = $etm;
     $this->dispatcher = $dispatcher;
   }
   
