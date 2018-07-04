@@ -5,6 +5,8 @@
  * Install functions for the allocine module.
  */
 
+use Drupal\allocine\Database;
+
 /**
  * Implements HOOK_schema().
  * 
@@ -13,7 +15,7 @@
 function allocine_schema() {
   $schema = [];
   
-  $schema['allocine_country'] = [
+  $schema[Database::TBL_COUNTRY] = [
     'description' => 'Mapping between Allocine countries and terms from Countries vocabulary.',
     'fields' => [
       'id' => [
@@ -60,7 +62,7 @@ function allocine_schema() {
     ],
   ];
   
-  $schema['allocine_genre'] = [
+  $schema[Database::TBL_GENRE] = [
     'description' => 'Mapping between Allocine genres and terms from Genres vocabulary.',
     'fields' => [
       'id' => [
@@ -107,7 +109,7 @@ function allocine_schema() {
     ],
   ];
   
-  $schema['allocine_movie'] = [
+  $schema[Database::TBL_MOVIE] = [
     'description' => 'Mapping between Allocine movies and Movie content types.',
     'fields' => [
       'id' => [
