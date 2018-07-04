@@ -29,6 +29,9 @@ class ImportSubscriber implements EventSubscriberInterface {
     $events[CountryImportedEvent::NAME] = [
       ['onImportCountry', 0],
     ];
+    $events[GenreImportedEvent::NAME] = [
+      ['onImportGenre', 0],
+    ];
     
     return $events;
   }
@@ -59,6 +62,24 @@ class ImportSubscriber implements EventSubscriberInterface {
       
       // Creates the mapping between the Allocine country and the 'countries' term.
       $this->database->createCountry($country->code, $country->name, $countryTerm->id());
+    }
+  }
+  
+  /**
+   * Actions when a GenreImportedEvent::NAME event is dispatched.
+   * 
+   * @param   GenreImportedEvent  $event  The event to process.
+   */
+  public function onImportGenre(GenreImportedEvent $event) {
+    $genre = $event->getGenre();
+    
+    // Determines whether a genre is already mapped with a term.
+    if (!$this->database->hasGenreByCode($genre->code)) {
+      // Creates a 'genres' term.
+      $genreTerm = $this->taxonomyManager->createGenreTerm($genre->name);
+      file_put_contents('D:/toto.txt', get_class($genreTerm));
+      // Creates the mapping between the Allocine genre and the 'genres' term.
+      $this->database->createGenre($genre->code, $genre->name, $genreTerm->id());
     }
   }
 }
