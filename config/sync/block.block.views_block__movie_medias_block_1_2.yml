@@ -1,0 +1,33 @@
+uuid: 9f89a698-7a71-4b37-ab7c-17e65d313d51
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.movie_medias
+  module:
+    - node
+    - views
+  theme:
+    - mixmedia
+id: views_block__movie_medias_block_1_2
+theme: mixmedia
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_block:movie_medias-block_1'
+settings:
+  id: 'views_block:movie_medias-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      movie: movie
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

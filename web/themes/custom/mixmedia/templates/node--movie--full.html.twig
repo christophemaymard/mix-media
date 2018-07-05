@@ -80,10 +80,10 @@
   <div{{ content_attributes }}>
   {# {{ content|without('comment', 'links', 'field_tags') }}#}
     <div class="node-movie-content-container"><!-- Movie content Container -->
-      <div class="dummy-image-movie-content"><!-- Left movie content -->
+      {#<div class="dummy-image-movie-content"><!-- Left movie content -->
         <img src="https://image.tmdb.org/t/p/w1280/9NXQyS56oJ8IhO0KjLEp1jfd9mg.jpg" width="100%" height="auto" />
       </div>
-      <!-- End left movie content -->
+      <!-- End left movie content -->#}
 
       <!-- right movie content -->
       <div class="right-node-content right-node-content-node-{{ node.id }}">
@@ -104,7 +104,7 @@
         <!-- Movie - Informations sur le film -->
         <ul class="datas-movie-infos">
           <!-- Movie - release date -->
-          <li class="movie-release-date">{{content.field_movie_release_date.value.0|date(format='d/m/Y')}}</li>
+          <li class="movie-release-date">{{content.field_movie_release_date}}</li>
 
           <!-- Movie - Countries -->
           <ul class="movie-countries">

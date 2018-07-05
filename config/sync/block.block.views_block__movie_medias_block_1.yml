@@ -1,0 +1,25 @@
+uuid: d8f96c2c-7b4c-4fd0-8bb5-4a2a8258465c
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.movie_medias
+  module:
+    - views
+  theme:
+    - mixmedia
+id: views_block__movie_medias_block_1
+theme: mixmedia
+region: meta_header
+weight: -4
+provider: null
+plugin: 'views_block:movie_medias-block_1'
+settings:
+  id: 'views_block:movie_medias-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility: {  }
