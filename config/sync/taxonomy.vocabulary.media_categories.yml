@@ -1,0 +1,9 @@
+uuid: dd433fc5-392d-4511-b437-7b09b26f08f5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Media Categories'
+vid: media_categories
+description: 'Catégorie des médias.'
+hierarchy: 0
+weight: 0
