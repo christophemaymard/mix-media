@@ -58,7 +58,7 @@ body.path-frontpage #block-mixmedia-branding img {
 /* ============================================================================
  * Node Movie
  */
-body.node--type-movie article[role="article"] {
+body.path-node article[role="article"] {
 	margin-bottom: 50px;
 }
 .node-movie-content-container,
@@ -67,15 +67,36 @@ body.node--type-movie article[role="article"] {
 ul.movie-countries {
 	display: flex;
 }
+
+.synopsis-movie-genre {
+	margin-left: -10px;
+}
 .dummy-image-movie-content {
 	width: 30%;
 	padding: 0;
 	margin: 0;
+	text-align: right;
+}
+.dummy-image-movie-content img {
+	min-width: inherit;
+	height: auto;
 }
 .node-movie-content-container .right-node-content {
 	padding: 0 2.5% 2.5%;
 	width: 65%;
 }
+.content-type-name {
+	text-transform: uppercase;
+	font-size: 11px;
+	font-family: 'Stag';
+	font-weight: 400;
+	padding: 7px 30px 7px 7px;
+	background-color: rgba(0,0,0,0.05);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 5px;
+	display: inline-block;
+}
+
 .right-node-content h1 {
 	margin-bottom: 0;
 }
@@ -94,8 +115,8 @@ ul.movie-countries {
 	color: #fff;
 	background-color:#222;
 	text-transform: uppercase;
-	font-size: 13px;
-	line-height: 13px;
+	font-size: 11px;
+	line-height: 11px;
 	font-weight: 500;
 	border-radius: 2px;
 	transition: background-color 200ms ease-out;
@@ -147,6 +168,12 @@ ul.movie-countries:before {
 	content: "\f017";
 	color: #ACF173;
 }
+
+.datas-movie-infos .book-author:before {
+	content: "\f007";
+	color: #555555;
+}
+
 ul.movie-countries {
 	position: relative;
 	padding-left: 23px;
@@ -226,8 +253,6 @@ ul.movie-countries li a:hover {
 /* ============================================================================
  * FOOTER
  */
-.bottom-bar.panel { text-align: center; }
-
 footer {
 	height: 300px;
 	max-width: 100%!important;
