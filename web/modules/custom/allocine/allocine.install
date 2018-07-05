@@ -156,5 +156,52 @@ function allocine_schema() {
     ],
   ];
   
+  $schema[Database::TBL_MEDIA_CATEGORY] = [
+    'description' => 'Mapping between Allocine media category and terms from Media Categories vocabulary.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_code' => [
+        'description' => 'Media Category code in Allocine.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_name' => [
+        'description' => 'Media Category name in Allocine.',
+        'type' => 'char',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'tid' => [
+        'description' => 'Term ID in Media Categories vocabulary.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Created timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'updated' => [
+        'description' => 'Updated timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      Database::TBL_MEDIA_CATEGORY.'_ac_code' => ['ac_code'],
+      Database::TBL_MEDIA_CATEGORY.'_tid' => ['tid'],
+    ],
+  ];
+  
   return $schema;
 }
