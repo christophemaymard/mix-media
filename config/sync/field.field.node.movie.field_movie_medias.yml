@@ -1,0 +1,28 @@
+uuid: 818c3786-9aa1-4a3c-8ee9-72575a4fc35c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_movie_medias
+    - node.type.movie
+    - node.type.picturemedia
+id: node.movie.field_movie_medias
+field_name: field_movie_medias
+entity_type: node
+bundle: movie
+label: Medias
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      picturemedia: picturemedia
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

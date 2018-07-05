@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.movie.field_movie_countries
     - field.field.node.movie.field_movie_genres
+    - field.field.node.movie.field_movie_medias
     - field.field.node.movie.field_movie_release_date
     - field.field.node.movie.field_movie_runtime
     - field.field.node.movie.field_movie_synopsis
@@ -36,6 +37,15 @@ content:
     region: content
   field_movie_genres:
     weight: 125
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_movie_medias:
+    weight: 127
     settings:
       match_operator: CONTAINS
       size: 60

@@ -96,6 +96,15 @@ Reference type
     Reference method: Default
     Vocabulary: Genres
 
+Label: Medias
+Machine: field_movie_medias
+Type: Content
+Allowed number of values: Unlimited
+Required: true
+Content type:
+    Picture Media
+Sort by: None
+
 
 
 -------------------------------------------------------------------------------
