@@ -41,6 +41,14 @@ Table: allocine_movie
 - created: Created timestamp.
 - updated: Updated timestamp.
 
+Table: allocine_media
+- id
+- ac_code: Media code in Allocine.
+- ac_type: Media type in Allocine.
+- nid: Node ID of the media content type (should be a PictureMedia content type).
+- created: Created timestamp.
+- updated: Updated timestamp.
+
 
 
 -------------------------------------------------------------------------------

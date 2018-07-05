@@ -32,6 +32,11 @@ class Database {
   const TBL_MEDIA_CATEGORY = 'allocine_media_category';
   
   /**
+   * The name of the table.
+   */
+  const TBL_MEDIA = 'allocine_media';
+  
+  /**
    * The database connection.
    * @var Connection
    */
