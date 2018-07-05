@@ -4,6 +4,7 @@ namespace Drupal\allocine;
 
 use Drupal\allocine\Exception\EntityException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 
 /**
@@ -14,6 +15,11 @@ class ContentTypeManager {
    * The name of the 'movie' content type.
    */
   const TYPE_MOVIE = 'movie';
+  
+  /**
+   * The name of the 'picturemedia' content type.
+   */
+  const TYPE_PICTURE_MEDIA = 'picturemedia';
   
   /**
    * The entity type manager.
@@ -84,5 +90,39 @@ class ContentTypeManager {
     }
     
     return $movie;
+  }
+  
+  /**
+   * Creates a 'picturemedia' content type.
+   * 
+   * @param   string        $title
+   * @param   int           $imageTid       The term ID.
+   * @param   int           $categoryTid    The term ID.
+   * @param   string|NULL   $copyright      The copyright.
+   * @return  Node  The instance of the created content type.
+   */
+  public function createPictureMediaContentType($title, $imageTid, $categoryTid, $copyright) {
+    $storage = $this->entityTypeManager->getStorage('node');
+    
+    // Creates the 'picturemedia' node.
+    $node = $storage->create(['type' => self::TYPE_PICTURE_MEDIA]);
+    
+    // Initialize the node.
+    $node->set('title', $title);
+    $node->set('field_picturemedia_title', $title);
+    $node->set('field_picturemedia_category', $categoryTid);
+    $node->set('field_picturemedia_image', [
+      'target_id' => $imageTid,
+      'alt' => $title,
+      'title' => $title,
+    ]);
+    
+    if ($copyright !== NULL) {
+      $node->set('field_picturemedia_copyright', $copyright);
+    }
+    
+    $node->save();
+    
+    return $node;
   }
 }

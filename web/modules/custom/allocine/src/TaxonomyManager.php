@@ -45,6 +45,17 @@ class TaxonomyManager {
   }
   
   /**
+   * Creates a term with the specified name into the 'media_categories' 
+   * vocabulary.
+   * 
+   * @param   string    $name The name of the media category.
+   * @return  Term  The instance of the created term.
+   */
+  public function createMediaCategoryTerm($name) {
+    return $this->createTerm('media_categories', $name);
+  }
+  
+  /**
    * Creates a term into the specified vocabulary.
    * 
    * @param   string  $vid  The vocabulary ID.

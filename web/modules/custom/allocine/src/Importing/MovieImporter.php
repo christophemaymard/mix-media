@@ -4,6 +4,8 @@ namespace Drupal\allocine\Importing;
 
 use Drupal\allocine\Event\CountryImportedEvent;
 use Drupal\allocine\Event\GenreImportedEvent;
+use Drupal\allocine\Event\MediaCategoryImportedEvent;
+use Drupal\allocine\Event\MediaImportedEvent;
 use Drupal\allocine\Event\MovieImportedEvent;
 use Drupal\allocine\Event\MovieReferenceCountryEvent;
 use Drupal\allocine\Event\MovieReferenceGenreEvent;
@@ -79,6 +81,20 @@ class MovieImporter {
       MovieReferenceGenreEvent::NAME, 
       new MovieReferenceGenreEvent($movie, $movie->genres)
     );
+    
+    foreach ($movie->medias as $media) {
+      // Imports media category.
+      $this->dispatcher->dispatch(
+        MediaCategoryImportedEvent::NAME, 
+        new MediaCategoryImportedEvent($media->category)
+      );
+      
+      // Imports media.
+      $this->dispatcher->dispatch(
+        MediaImportedEvent::NAME, 
+        new MediaImportedEvent($media)
+      );
+    }
     
     return $movie;
   }

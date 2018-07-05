@@ -203,5 +203,52 @@ function allocine_schema() {
     ],
   ];
   
+  $schema[Database::TBL_MEDIA] = [
+    'description' => 'Mapping between Allocine medias and Media content types.',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary Key: Unique ID.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_code' => [
+        'description' => 'Media code in Allocine.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'ac_type' => [
+        'description' => 'Media type in Allocine.',
+        'type' => 'char',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'Node ID of the Media content type.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'description' => 'Created timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'updated' => [
+        'description' => 'Updated timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      Database::TBL_MEDIA.'_ac_code' => ['ac_code'],
+      Database::TBL_MEDIA.'_nid' => ['nid'],
+    ],
+  ];
+  
   return $schema;
 }
