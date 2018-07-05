@@ -309,4 +309,75 @@ class Database {
     
     return count($results) > 0;
   }
+  
+  /**
+   * Returns the term ID of the media category with the specified Allocine 
+   * media category code.
+   * 
+   * @param   int   $code   The Allocine code of the media category to retrieve.
+   * @return  int   The term ID of the media category.
+   * 
+   * @throws  DatabaseException When the term ID cannot be determined for the media category.
+   */
+  public function getMediaCategoryTermIdByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_MEDIA_CATEGORY, 'ac')
+      ->fields('ac', ['tid'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    if (count($results) != 1) {
+      throw new DatabaseException(sprintf(
+        'The term ID, in the "media_categories" vocabulary, cannot be determined for the Allocine media category code "%s".', 
+        $code
+      ));
+    }
+    
+    $term = array_pop($results);
+    
+    return $term->tid;
+  }
+  
+  /**
+   * Creates a record in the allocine_media table that maps a media from 
+   * Allocine and a media content type.
+   * 
+   * @param   int     $code     The Allocine media code.
+   * @param   string  $type     The Allocine media type. 
+   * @param   int     $nid      The node ID.
+   * @return  
+   */
+  public function createMedia($code, $type, $nid) {
+    $createdTime = $this->time->getCurrentTime();
+    
+    return $this->database
+      ->insert(self::TBL_MEDIA)
+      ->fields([
+        'ac_code' => $code,
+        'ac_type' => $type,
+        'nid' => $nid,
+        'created' => $createdTime,
+        'updated' => $createdTime,
+      ])
+      ->execute();
+  }
+  
+  /**
+   * Indicates whether a record with the specified Allocine media code is 
+   * stored in the allocine_media table.
+   * 
+   * @param   int   $code   The Allocine movie code.
+   * @return  bool
+   */
+  public function hasMediaByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_MEDIA, 'ac')
+      ->fields('ac', ['id'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    return count($results) > 0;
+  }
 }

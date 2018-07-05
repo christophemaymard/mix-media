@@ -5,6 +5,9 @@ namespace Drupal\allocine\Event;
 use Drupal\allocine\ContentTypeManager;
 use Drupal\allocine\Database;
 use Drupal\allocine\TaxonomyManager;
+use Drupal\allocine\WebService\Data\PictureMedia;
+use Drupal\Core\File\FileSystem;
+use Drupal\file\Entity\File;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -29,6 +32,12 @@ class ImportSubscriber implements EventSubscriberInterface {
   private $contentTypeManager;
   
   /**
+   * The file system manager.
+   * @var FileSystem
+   */
+  private $fileSystem;
+  
+  /**
    * {@inheritDoc}
    */
   public static function getSubscribedEvents() {
@@ -45,6 +54,9 @@ class ImportSubscriber implements EventSubscriberInterface {
     $events[MediaCategoryImportedEvent::NAME] = [
       ['onImportMediaCategory', 0],
     ];
+    $events[MediaImportedEvent::NAME] = [
+      ['onImportPictureMedia', 0],
+    ];
     
     return $events;
   }
@@ -55,14 +67,17 @@ class ImportSubscriber implements EventSubscriberInterface {
    * @param   Database              $database
    * @param   TaxonomyManager       $taxonomyManager    The taxonomy manager.
    * @param   ContentTypeManager    $contentTypeManager The content type manager.
+   * @param   FileSystem            $fileSystem         The file system manager.
    */
   public function __construct(
     Database $database, 
     TaxonomyManager $taxonomyManager,
-    ContentTypeManager $contentTypeManager) {
+    ContentTypeManager $contentTypeManager,
+    FileSystem $fileSystem) {
     $this->database = $database;
     $this->taxonomyManager = $taxonomyManager;
     $this->contentTypeManager = $contentTypeManager;
+    $this->fileSystem = $fileSystem;
   }
   
   /**
@@ -141,5 +156,74 @@ class ImportSubscriber implements EventSubscriberInterface {
       // 'media_categories' term.
       $this->database->createMediaCategory($category->code, $category->name, $term->id());
     }
+  }
+  
+  /**
+   * Actions when a MediaImportedEvent::NAME event is dispatched.
+   * 
+   * @param   MediaImportedEvent    $event  The event to process.
+   */
+  public function onImportPictureMedia(MediaImportedEvent $event) {
+    $media = $event->getMedia();
+    
+    // Only process picture media.
+    if (!$media instanceof PictureMedia) {
+      return;
+    }
+    
+    // Determines whether a media is already mapped with a content type.
+    if (!$this->database->hasMediaByCode($media->code)) {
+      // Downloads the picture file and creates an image entity.
+      $image = $this->createFileEntityFromUrl($media->url);
+      
+      $category = $this->database->getMediaCategoryTermIdByCode($media->category->code);
+      
+      // Creates a 'picturemedia' content type.
+      $contentType = $this->contentTypeManager->createPictureMediaContentType(
+        $media->title,
+        $image->id(),
+        $category,
+        $media->copyright
+      );
+      
+      // Creates the mapping between the Allocine media and the 'picturemedia' content type.
+      $this->database->createMedia($media->code, $media->type, $contentType->id());
+    }
+  }
+  
+  /**
+   * 
+   * @param   string  $url
+   * @return  File
+   * 
+   * @throws  \Exception  When the file cannot be downloaded.
+   * @throws  \Exception  When the file cannot be created.
+   */
+  private function createFileEntityFromUrl($url) {
+    if (FALSE === $data = file_get_contents($url)) {
+      throw new \Exception(sprintf('The file, located at "%s", cannot be downloaded.', $url));
+    }
+    
+    $file = File::create();
+    $fileName = $this->fileSystem->basename($url);
+    $file->setFileName($fileName);
+    $file->setFileUri(sprintf("public://%s", $fileName));
+    $file->setMimeType('image/'.pathinfo($url, PATHINFO_EXTENSION));
+    
+    // Create the directory if necessary.
+    $dir = $this->fileSystem->dirname($url);
+    
+    if (!file_exists($dir)) {
+      $this->fileSystem->mkdir($dir, 0770, TRUE);
+    }
+    
+    // Stores the content of the file.
+    if (file_put_contents($file->getFileUri(), $data) === FALSE) {
+      throw new \Exception(sprintf('The file "%s" cannot be created.', $file->getFileUri()));
+    }
+    
+    $file->save();
+    
+    return $file;
   }
 }
