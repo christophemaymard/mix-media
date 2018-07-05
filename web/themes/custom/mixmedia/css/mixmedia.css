@@ -36,7 +36,6 @@ h4 { font-size: 18px;}
 /* ============================================================================
  * HEADER
  */
-
  #block-mixmedia-main-menu {
  	display: none;
  }
@@ -59,11 +58,9 @@ body.path-frontpage #block-mixmedia-branding img {
 /* ============================================================================
  * Node Movie
  */
-
 body.node--type-movie article[role="article"] {
 	margin-bottom: 50px;
 }
-
 .node-movie-content-container,
 .datas-movie-infos,
 .synopsis-movie-genre,
@@ -93,7 +90,7 @@ ul.movie-countries {
 .synopsis-movie-genre a {
 	display: block;
 	padding: 7px 10px;
-	margin-bottom: 20px;
+	margin: 0 0 20px 7px;
 	color: #fff;
 	background-color:#222;
 	text-transform: uppercase;
@@ -136,7 +133,6 @@ ul.movie-countries:before {
 	font-weight: normal;
 	color: #444;
 }
-
 .datas-movie-infos .movie-release-date:before {
 	content: "\f073";
 	color: #E95F7A;
@@ -151,28 +147,29 @@ ul.movie-countries:before {
 	content: "\f017";
 	color: #ACF173;
 }
-
 ul.movie-countries {
 	position: relative;
 	padding-left: 23px;
 	margin: 0 0 0 7px;
 }
-
 ul.movie-countries li {
 	padding: 0;
 	margin: 0;
 }
-
 ul.movie-countries li:after {
 	content: "/";
 	display: inline-block;
 	padding: 0 3px;
 }
-
 ul.movie-countries li:last-child::after {
 	content: "";
 }
-
+ul.movie-countries li a {
+	transition: color 200ms ease-out;
+}
+ul.movie-countries li a:hover {
+	color: #A5B3FD;
+}
 
 /* ============================================================================
  * Mur Cinema Home
@@ -190,7 +187,6 @@ ul.movie-countries li:last-child::after {
     overflow: hidden;
     border-radius: 5px;
 }
-
 .touslesfilms-btn {
 	display: block;
 	width: 450px;
@@ -208,7 +204,6 @@ ul.movie-countries li:last-child::after {
     border-radius: 10px;
     transition: all 200ms ease-out;
 }
-
 .touslesfilms-btn:hover {
 	background-color: rgba(0,0,0,1);
 	color: rgba(255,255,255,1);
@@ -222,7 +217,6 @@ ul.movie-countries li:last-child::after {
 	color: rgba(0,0,0,1);
 	font-size: 20px;
 }
-
 .touslesfilms-btn:hover::before,
 .touslesfilms-btn:hover::after { color: rgba(255,255,255,1); }
 
@@ -241,7 +235,6 @@ footer {
 	background-size: cover;
 	position: relative;
 }
-
 footer .columns {
 	margin-top: 40px;
 	width: 20%;
@@ -253,7 +246,6 @@ footer .columns h3 {
 	margin: 50px 0 10px 0;
 	color: #FFFFFF;
 }
-
 footer #footer-logo {
 	position: relative;
 	text-align: center;
