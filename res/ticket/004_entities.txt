@@ -171,3 +171,29 @@ Upload destination: Public files
 Allowed number of values: 1
 Default image: none
 Required: true
+
+
+
+-------------------------------------------------------------------------------
+-- Content Type: Mix
+
+Machine-readable name: mix
+
+Label: Movies
+Machine: field_mix_movies
+Type: Content
+Allowed number of values: Unlimited
+Required: true
+Reference type
+    Reference method: Default
+    Content type: Movie
+
+Label: Books
+Machine: field_mix_movies
+Type: Content
+Allowed number of values: Unlimited
+Required: true
+Reference type
+    Reference method: Default
+    Content type: Book
+

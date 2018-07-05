@@ -1,0 +1,18 @@
+uuid: 2f525453-6256-4a4a-97d1-a2080f25e165
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Mix
+type: mix
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
