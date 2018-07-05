@@ -6,17 +6,25 @@ Les entités.
 -------------------------------------------------------------------------------
 -- Vocabulary: Genres
 
+Machine-readable name: genres
+
 
 -------------------------------------------------------------------------------
 -- Vocabulary: Countries
+
+Machine-readable name: countries
 
 
 -------------------------------------------------------------------------------
 -- Vocabulary: Jobs
 
+Machine-readable name: jobs
+
 
 -------------------------------------------------------------------------------
 -- Vocabulary: Media Categories
+
+Machine-readable name: media_categories
 
 
 -------------------------------------------------------------------------------
