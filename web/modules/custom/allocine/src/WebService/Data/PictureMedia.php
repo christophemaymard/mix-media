@@ -12,12 +12,6 @@ class PictureMedia extends Media {
   const MEDIA_TYPE = 'picture';
   
   /**
-   * The category.
-   * @var MediaCategory
-   */
-  public $category;
-  
-  /**
    * The title.
    * @var string
    */

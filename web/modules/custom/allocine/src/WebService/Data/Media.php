@@ -17,4 +17,10 @@ class Media {
    * @var int
    */
   public $code;
+  
+  /**
+   * The category.
+   * @var MediaCategory
+   */
+  public $category;
 }
