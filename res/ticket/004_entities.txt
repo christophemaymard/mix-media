@@ -123,3 +123,42 @@ Required: true
 Reference type
     Reference method: Default
     Vocabulary: Genres
+
+
+
+-------------------------------------------------------------------------------
+-- Content Type: Picture Media
+
+Machine-readable name: picturemedia
+
+Label: Title
+Machine: field_picturemedia_title
+Type: Text (plain)
+Allowed number of values: 1
+Max length: 255
+Required: true
+
+Label: Category
+Machine: field_picturemedia_category
+Type: Reference - Taxonomy term
+Type of item to reference: Taxonomy term
+Allowed number of values: Limited to 1
+Required: true
+Reference type
+    Reference method: Default
+    Vocabulary: Media Categories
+
+Label: Copyright
+Machine: field_picturemedia_copyright
+Type: Text (plain)
+Allowed number of values: 1
+Max length: 255
+Required: false
+
+Label: Image
+Machine: field_picturemedia_image
+Type: Image
+Upload destination: Public files
+Allowed number of values: 1
+Default image: none
+Required: true

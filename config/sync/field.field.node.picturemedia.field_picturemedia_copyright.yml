@@ -1,0 +1,19 @@
+uuid: 9c0b2bc1-5d9e-4497-9415-ac5074e1a6d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_picturemedia_copyright
+    - node.type.picturemedia
+id: node.picturemedia.field_picturemedia_copyright
+field_name: field_picturemedia_copyright
+entity_type: node
+bundle: picturemedia
+label: Copyright
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

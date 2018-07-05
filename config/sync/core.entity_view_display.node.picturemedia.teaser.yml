@@ -1,0 +1,18 @@
+uuid: ebb30f36-dd04-414c-ad0a-936ca3a70d94
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.picturemedia
+  module:
+    - user
+id: node.picturemedia.teaser
+targetEntityType: node
+bundle: picturemedia
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden: {  }
