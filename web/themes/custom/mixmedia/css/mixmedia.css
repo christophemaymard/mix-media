@@ -36,7 +36,6 @@ h4 { font-size: 18px;}
 /* ============================================================================
  * HEADER
  */
-
  #block-mixmedia-main-menu {
  	display: none;
  }
@@ -59,11 +58,9 @@ body.path-frontpage #block-mixmedia-branding img {
 /* ============================================================================
  * Node Movie
  */
-
 body.node--type-movie article[role="article"] {
 	margin-bottom: 50px;
 }
-
 .node-movie-content-container,
 .datas-movie-infos,
 .synopsis-movie-genre,
@@ -150,32 +147,26 @@ ul.movie-countries:before {
 	content: "\f017";
 	color: #ACF173;
 }
-
 ul.movie-countries {
 	position: relative;
 	padding-left: 23px;
 	margin: 0 0 0 7px;
 }
-
 ul.movie-countries li {
 	padding: 0;
 	margin: 0;
 }
-
 ul.movie-countries li:after {
 	content: "/";
 	display: inline-block;
 	padding: 0 3px;
 }
-
 ul.movie-countries li:last-child::after {
 	content: "";
 }
-
 ul.movie-countries li a {
 	transition: color 200ms ease-out;
 }
-
 ul.movie-countries li a:hover {
 	color: #A5B3FD;
 }
@@ -244,7 +235,6 @@ footer {
 	background-size: cover;
 	position: relative;
 }
-
 footer .columns {
 	margin-top: 40px;
 	width: 20%;
@@ -256,7 +246,6 @@ footer .columns h3 {
 	margin: 50px 0 10px 0;
 	color: #FFFFFF;
 }
-
 footer #footer-logo {
 	position: relative;
 	text-align: center;
