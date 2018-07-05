@@ -31,6 +31,8 @@ class DataFactory {
       $data->nationalities[] = $this->createCountry($country);
     }
     
+    $data->medias = $this->createMovieMedias($movie);
+    
     return $data;
   }
   
@@ -58,6 +60,55 @@ class DataFactory {
     $data = new Country();
     $data->code = $country->code;
     $data->name = $country->{'$'};
+    
+    return $data;
+  }
+  
+  /**
+   * Creates a set of Media  data from the specified Movie \stdClass instance.
+   * 
+   * @param   \stdClass $movie
+   * @return  Media[]   An indexed array of the created Media data.
+   */
+  public function createMovieMedias(\stdClass $movie) {
+    $medias = [];
+    
+    foreach ($movie->media as $media) {
+      // Only process picture media.
+      if ($media->class != 'picture') {
+        continue;
+      }
+      
+      $medias[] = $this->createPictureMedia($media);
+    }
+    
+    return $medias;
+  }
+  
+  /**
+   * Creates a PictureMedia data from the specified \stdClass instance.
+   * 
+   * @param   \stdClass   $media
+   * @return  PictureMedia  The created PictureMedia data.
+   */
+  public function createPictureMedia(\stdClass $media) {
+    $data = new PictureMedia();
+    $data->type = PictureMedia::MEDIA_TYPE;
+    $data->code = $media->rcode;
+    $data->title = $media->title;
+    $data->url = $media->thumbnail->href;
+    $data->width = $media->width;
+    $data->height = $media->height;
+    
+    if (property_exists($media, 'copyrightHolder') && '' != $media->copyrightHolder) {
+      $data->copyright = $media->copyrightHolder;
+    }
+    
+    $category = new MediaCategory();
+    $category->code = $media->type->code;
+    $category->name = $media->type->{'$'};
+    
+    $data->category = $category;
     
     return $data;
   }

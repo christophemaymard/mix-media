@@ -47,4 +47,10 @@ class Movie {
    * @var Genre[]
    */
   public $genres = [];
+  
+  /**
+   * The medias.
+   * @var Media[]
+   */
+  public $medias = [];
 }

@@ -11,4 +11,10 @@ class Media {
    * @var string
    */
   public $type;
+  
+  /**
+   * The code.
+   * @var int
+   */
+  public $code;
 }
