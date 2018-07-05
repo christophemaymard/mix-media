@@ -197,3 +197,31 @@ Reference type
     Reference method: Default
     Content type: Book
 
+
+
+-------------------------------------------------------------------------------
+-- Paragraph Type: Member
+
+Machine-readable name: member
+
+Label: Person
+Machine: field_member_person
+Limited: 1
+Type: Content
+Required: true
+Reference type
+    Reference method: Default
+    Content type: Person
+
+Label: Job
+Machine: field_member_job
+Type: Reference - Taxonomy term
+Type of item to reference: Taxonomy term
+Allowed number of values: Limited to 1
+Required: true
+Reference type
+    Reference method: Default
+    Vocabulary: Media Jobs
+
+
+

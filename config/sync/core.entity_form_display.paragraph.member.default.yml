@@ -1,0 +1,35 @@
+uuid: 0eeef790-057c-40c5-924e-bb462b72fb8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.member.field_member_job
+    - field.field.paragraph.member.field_member_person
+    - paragraphs.paragraphs_type.member
+id: paragraph.member.default
+targetEntityType: paragraph
+bundle: member
+mode: default
+content:
+  field_member_job:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_member_person:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,30 @@
+uuid: 88e6bc99-d0a5-4608-bb33-4ea3fcbca09c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.member.field_member_job
+    - field.field.paragraph.member.field_member_person
+    - paragraphs.paragraphs_type.member
+id: paragraph.member.default
+targetEntityType: paragraph
+bundle: member
+mode: default
+content:
+  field_member_job:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_member_person:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }
