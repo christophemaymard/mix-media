@@ -42,6 +42,9 @@ class ImportSubscriber implements EventSubscriberInterface {
     $events[MovieImportedEvent::NAME] = [
       ['onImportMovie', 0],
     ];
+    $events[MediaCategoryImportedEvent::NAME] = [
+      ['onImportMediaCategory', 0],
+    ];
     
     return $events;
   }
@@ -118,6 +121,25 @@ class ImportSubscriber implements EventSubscriberInterface {
       
       // Creates the mapping between the Allocine movie and the 'movie' content type.
       $this->database->createMovie($movie->code, $movie->title, $movieContentType->id());
+    }
+  }
+  
+  /**
+   * Actions when a MediaCategoryImportedEvent::NAME event is dispatched.
+   * 
+   * @param   MediaCategoryImportedEvent  $event  The event to process.
+   */
+  public function onImportMediaCategory(MediaCategoryImportedEvent $event) {
+    $category = $event->getMediaCategory();
+    
+    // Determines whether a media category is already mapped with a term.
+    if (!$this->database->hasMediaCategoryByCode($category->code)) {
+      // Creates a 'media_categories' term.
+      $term = $this->taxonomyManager->createMediaCategoryTerm($category->name);
+      
+      // Creates the mapping between the Allocine media category and the 
+      // 'media_categories' term.
+      $this->database->createMediaCategory($category->code, $category->name, $term->id());
     }
   }
 }

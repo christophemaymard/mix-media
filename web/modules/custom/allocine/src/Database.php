@@ -268,4 +268,45 @@ class Database {
     
     return $node->nid;
   }
+  
+  /**
+   * Creates a record in the allocine_media_category table.
+   * 
+   * @param   int     $code The Allocine media category code.
+   * @param   string  $name The Allocine media category name. 
+   * @param   int     $tid  The term ID.
+   * @return  
+   */
+  public function createMediaCategory($code, $name, $tid) {
+    $createdTime = $this->time->getCurrentTime();
+    
+    return $this->database
+      ->insert(self::TBL_MEDIA_CATEGORY)
+      ->fields([
+        'ac_code' => $code,
+        'ac_name' => $name,
+        'tid' => $tid,
+        'created' => $createdTime,
+        'updated' => $createdTime,
+      ])
+      ->execute();
+  }
+  
+  /**
+   * Indicates whether a record with the specified Allocine media category 
+   * code is stored in the allocine_media_category table.
+   * 
+   * @param   int   $code   The Allocine media category code.
+   * @return  bool
+   */
+  public function hasMediaCategoryByCode($code) {
+    $results = $this->database
+      ->select(self::TBL_MEDIA_CATEGORY, 'ac')
+      ->fields('ac', ['id'])
+      ->condition('ac_code', $code)
+      ->execute()
+      ->fetchAll();
+    
+    return count($results) > 0;
+  }
 }
