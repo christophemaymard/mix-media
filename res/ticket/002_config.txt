@@ -4,6 +4,13 @@ Description:
 Configurations générales de Drupal.
 
 -------------------------------------------------------------------------------
+-- Administration
+
++  Administration >> Configuration >> Media >> File system
+
+Temporary directory: ../tmp
+
+-------------------------------------------------------------------------------
 -- Configuration: Sync
 
 Modules:
