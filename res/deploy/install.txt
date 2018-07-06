@@ -1,0 +1,27 @@
+# Retrieve project.
+git clone https://github.com/christophemaymard/mix-media.git .
+
+# Install Composer dependencies.
+composer install
+
+# Install Drupal 8.
+./bin/drupal si standard --langcode="en" --db-type="mysql" --db-host="127.0.0.1" --db-port="3306" --db-name="mix_media" --db-user="root" --db-pass="" --site-name="Mix Media" --site-mail="admin@example.com" --account-name="admin" --account-mail="admin@example.com" --account-pass="123456"
+  
+# Override system site UUID to match the configuration.
+./bin/drush config-set -y "system.site" uuid 0781f3f3-99fb-4f85-878b-2200a5d347e2
+
+# Remove "Shortcut link" entities
+./bin/drush edel -y shortcut
+
+# Import configuration.
+./bin/drush -y cim
+
+# Import configuration split.
+./bin/drush -y csim
+
+# Create the temporary directory.
+mkdir tmp
+
+# Rebuild cache.
+./bin/drush cr
+
