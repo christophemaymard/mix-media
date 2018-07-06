@@ -148,13 +148,13 @@ class ImportSubscriber implements EventSubscriberInterface {
     $category = $event->getMediaCategory();
     
     // Determines whether a media category is already mapped with a term.
-    if (!$this->database->hasMediaCategoryByCode($category->code)) {
+    if (!$this->taxonomyManager->hasMediaCategoryTermById($category->code)) {
       // Creates a 'media_categories' term.
-      $term = $this->taxonomyManager->createMediaCategoryTerm($category->name);
-      
-      // Creates the mapping between the Allocine media category and the 
-      // 'media_categories' term.
-      $this->database->createMediaCategory($category->code, $category->name, $term->id());
+      // The Allocine code of the media category is used as TID.
+      $this->taxonomyManager->createMediaCategoryTerm(
+        $category->code,
+        $category->name
+      );
     }
   }
   
@@ -176,7 +176,8 @@ class ImportSubscriber implements EventSubscriberInterface {
       // Downloads the picture file and creates an image entity.
       $image = $this->createFileEntityFromUrl($media->url);
       
-      $category = $this->database->getMediaCategoryTermIdByCode($media->category->code);
+      // The Allocine code of the media category is used as TID.
+      $category = $this->taxonomyManager->getMediaCategoryById($media->category->code);
       
       // Creates a 'picturemedia' content type.
       $contentType = $this->contentTypeManager->createPictureMediaContentType(

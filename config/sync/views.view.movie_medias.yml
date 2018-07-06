@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_picturemedia_image
     - taxonomy.vocabulary.media_categories
   content:
-    - 'taxonomy_term:media_categories:0e38df0c-92d3-4c2e-9161-fce11e8939a2'
+    - 'taxonomy_term:media_categories:bb8a07e8-899f-4d4d-b8d9-9c7542c7d62f'
   module:
     - image
     - node
@@ -136,7 +136,7 @@ display:
           admin_label: ''
           operator: and
           value:
-            84: 84
+            31001: 31001
           group: 1
           exposed: false
           expose:

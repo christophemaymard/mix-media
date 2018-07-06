@@ -2,6 +2,7 @@
 
 namespace Drupal\allocine;
 
+use Drupal\allocine\Exception\TaxonomyException;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\taxonomy\Entity\Term;
 
@@ -48,11 +49,67 @@ class TaxonomyManager {
    * Creates a term with the specified name into the 'media_categories' 
    * vocabulary.
    * 
+   * @param   int       $tid  The term ID to set for the new term.
    * @param   string    $name The name of the media category.
    * @return  Term  The instance of the created term.
    */
-  public function createMediaCategoryTerm($name) {
-    return $this->createTerm('media_categories', $name);
+  public function createMediaCategoryTerm($tid, $name) {
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    
+    $term = $storage->create([
+      'vid' => 'media_categories',
+      'tid' => $tid,
+      'name' => $name,
+    ]);
+    $term->save();
+    
+    return $term;
+  }
+  
+  /**
+   * Returns the term with the specified ID from the 'media_categories' 
+   * vocabulary.
+   * 
+   * @param   int $tid  The term ID.
+   * @return  Term
+   * 
+   * @throws  TaxonomyException When the 'media_categories' term cannot be found.
+   */
+  public function getMediaCategoryById($tid) {
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    
+    // Retrieves the term with the speicified tid.
+    $query = $storage->getQuery();
+    $query->condition('vid',  'media_categories');
+    $query->condition('tid', $tid);
+    $tids = $query->execute();
+    
+    $term = $storage->load($tid);
+    
+    if (count($tids) != 1 || !$term) {
+      throw new TaxonomyException(sprintf('The "media_categories" term with the term ID "%s" cannot be found.', $tid));
+    }
+    
+    return $term;
+  }
+  
+  /**
+   * Indicates whether a term with the specified ID is stored in the 
+   * 'media_categories'  vocabulary.
+   * 
+   * @param   int $tid  The term ID.
+   * @return  bool
+   */
+  public function hasMediaCategoryTermById($tid) {
+    $storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    
+    // Retrieves the term with the speicified tid.
+    $query = $storage->getQuery();
+    $query->condition('vid',  'media_categories');
+    $query->condition('tid', $tid);
+    $tids = $query->execute();
+    
+    return count($tids) > 0;
   }
   
   /**
