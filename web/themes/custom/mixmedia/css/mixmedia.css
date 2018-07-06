@@ -28,10 +28,10 @@ p {
 /* ============================================================================
  * Titres des contenus
  */
-h1 { font-size: 36px;}
-h2 { font-size: 24px;}
-h3 { font-size: 20px;}
-h4 { font-size: 18px;}
+h1 { font-size: 36px; line-height: 36px;}
+h2 { font-size: 24px; line-height: 24px;}
+h3 { font-size: 20px; line-height: 20px;}
+h4 { font-size: 18px; line-height: 18px;}
 
 /* ============================================================================
  * HEADER
@@ -39,25 +39,16 @@ h4 { font-size: 18px;}
  #block-mixmedia-main-menu {
  	display: none;
  }
+
 #block-mixmedia-branding {
-	width: 200px;
-	margin: 40px 0;
-}
-body.path-frontpage #block-mixmedia-branding {
 	width: 250px;
 	margin: 40px auto 80px auto;
-}
-#block-mixmedia-branding img {
-	width: 150px;
-	height: auto;
-}
-body.path-frontpage #block-mixmedia-branding img {
-	width: 250px;
 }
 
 /* ============================================================================
  * Node Movie
  */
+
 body.path-node article[role="article"] {
 	margin-bottom: 50px;
 }
@@ -83,7 +74,7 @@ ul.movie-countries {
 }
 .node-movie-content-container .right-node-content {
 	padding: 0 2.5% 2.5%;
-	width: 65%;
+	width: 95%;
 }
 .content-type-name {
 	text-transform: uppercase;
@@ -110,8 +101,8 @@ ul.movie-countries {
 }
 .synopsis-movie-genre a {
 	display: block;
-	padding: 7px 10px;
-	margin: 0 0 20px 7px;
+	padding: 8px 10px 7px;
+	margin: 5px 0 20px 7px;
 	color: #fff;
 	background-color:#222;
 	text-transform: uppercase;
@@ -198,23 +189,48 @@ ul.movie-countries li a:hover {
 	color: #A5B3FD;
 }
 
+.block-views-blockmovie-medias-block-1 {
+	margin-bottom: 50px;
+}
+
 /* ============================================================================
  * Mur Cinema Home
  */
-.masonry { 
+ 
+ .front-mix-media-page {
+ 	display: table;
+ 	margin: 0 auto;
+ 	width: 100%;
+ 	text-align: center;
+ }
+ 
+.front-mix-media-page .masonry { 
    column-count: 3;
     column-gap: 1em;
     width: 100%;
     margin-bottom: 60px;
 }
-.masonry-brick {
+.front-mix-media-page .views-row {
   background-color: #eee;
     display: inline-block;
-    margin: 0 0 1em;
+    margin: 0px 1.5% 30px 1.5%;
     overflow: hidden;
     border-radius: 5px;
+    width: 30%;
+    vertical-align: middle;
 }
-.touslesfilms-btn {
+
+.front-mix-media-page .views-row img {
+    filter: brightness(80%);
+    transition: all 200ms ease-out;
+}
+
+.front-mix-media-page .views-row:hover img {
+        filter: brightness(100%);
+}
+
+.touslesfilms-btn,
+.views-exposed-form .form-submit {
 	display: block;
 	width: 450px;
 	padding: 20px 0;
@@ -231,7 +247,18 @@ ul.movie-countries li a:hover {
     border-radius: 10px;
     transition: all 200ms ease-out;
 }
-.touslesfilms-btn:hover {
+
+.views-exposed-form .form-submit {
+	margin: 0 auto 20px auto;
+	width: 100px;
+	font-size: 15px;
+	line-height: 15px;
+	padding: 10px 0; 
+
+}
+
+.touslesfilms-btn:hover,
+.views-exposed-form .form-submit:hover {
 	background-color: rgba(0,0,0,1);
 	color: rgba(255,255,255,1);
 }
@@ -249,6 +276,42 @@ ul.movie-countries li a:hover {
 
 .touslesfilms-btn:before { left: 20px; }
 .touslesfilms-btn:after { right: 20px; }
+
+.front-mix-media-page footer {
+	background-image: none;
+	background: transparent;
+	height: auto;
+}
+
+/*  Titre des vues */
+
+.front-mix-media-page header, .block-mixmedia-page-title {
+	text-align: center;
+}
+
+.front-mix-media-page header h1, .block-mixmedia-page-title h1 {
+	display: inline-block;
+	background-color: rgba(0,0,0,0.05);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 5px 30px;
+}
+
+/* Filtre des films */
+
+.views-exposed-form {
+	width: 300px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.views-exposed-form label,
+.views-exposed-form select {
+	text-transform: uppercase;
+	font-family: 'Stag';
+	text-align: center;
+	margin: 0 0 10px 0;
+}
+
 
 /* ============================================================================
  * FOOTER
