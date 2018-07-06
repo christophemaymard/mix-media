@@ -4,5 +4,5 @@ arguments:
   code: 'The Allocine code of the movie to import.'
 messages:
   execute: 'Import movie with code "@code".'
-  success: 'The movie "@title" (@code) has been imported successfully from Allocine.'
+  success: 'The movie "@title" (@code) has been imported successfully from Allocine in @duration seconds.'
   error: '@message'

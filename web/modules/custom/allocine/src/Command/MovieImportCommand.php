@@ -61,6 +61,8 @@ class MovieImportCommand extends ContainerAwareCommand {
    * {@inheritDoc}
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
+    $startTime = microtime(TRUE);
+    
     $io = $this->getIo();
     
     // Retrieves the 'code' argument.
@@ -72,9 +74,12 @@ class MovieImportCommand extends ContainerAwareCommand {
       // Imports movie data from Allocine.
       $movie = $this->movieImporter->importMovie($code);
       
+      $duration = microtime(TRUE) - $startTime;
+      
       $io->info($this->translate(self::MSG_PREFIX.'.messages.success', [
         '@title' => $movie->title,
         '@code' => $code,
+        '@duration' => $duration,
       ]));
     } catch (\Exception $ex) {
       // Displays error message on exception.
