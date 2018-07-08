@@ -18,6 +18,7 @@ content:
 hidden:
   field_movie_countries: true
   field_movie_genres: true
+  field_movie_medias: true
   field_movie_release_date: true
   field_movie_runtime: true
   field_movie_synopsis: true
