@@ -9,8 +9,7 @@ dependencies:
     - taxonomy.vocabulary.jobs
     - taxonomy.vocabulary.media_categories
   content:
-    - 'taxonomy_term:genres:ce1fc89c-bd3b-459c-9774-e40ea9be63f2'
-    - 'taxonomy_term:media_categories:8430671d-5755-4282-93da-6537aaefcf3b'
+    - 'taxonomy_term:media_categories:557248c8-5183-4bbd-a367-87256cbd64ad'
   module:
     - image
     - node
@@ -887,7 +886,7 @@ display:
           admin_label: ''
           operator: and
           value:
-            91: 91
+            31001: 31001
           group: 1
           exposed: false
           expose:
