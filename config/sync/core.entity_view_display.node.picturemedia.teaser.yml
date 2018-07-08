@@ -15,4 +15,8 @@ content:
   links:
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_picturemedia_category: true
+  field_picturemedia_copyright: true
+  field_picturemedia_image: true
+  field_picturemedia_title: true
